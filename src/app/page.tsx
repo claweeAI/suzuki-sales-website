@@ -1,7 +1,85 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
+
+const DELIVERY_IMAGES = [1,2,3];
+
+function DeliveryCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [idx, setIdx] = useState(0);
+  const max = DELIVERY_IMAGES.length - 1;
+
+  const scroll = (dir: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const nxt = Math.max(0, Math.min(max, idx + dir));
+    setIdx(nxt);
+    el.scrollTo({ left: nxt * el.clientWidth, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4"
+        style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" }}
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          setIdx(Math.round(el.scrollLeft / el.clientWidth));
+        }}
+      >
+        {DELIVERY_IMAGES.map((n) => (
+          <div key={n} className="snap-start shrink-0 w-full aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+            <img
+              src={`/images/delivery-${n}.jpg`}
+              alt={`交車照片 ${n}`}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const t = e.currentTarget;
+                t.style.display = "none";
+                const p = t.parentElement!;
+                p.classList.add("flex", "items-center", "justify-center", "text-[#bbb]", "font-bold");
+                p.textContent = `📸 交車照 ${n}`;
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* 左右箭頭 */}
+      <button
+        onClick={() => scroll(-1)}
+        className={`absolute top-1/2 -translate-y-1/2 left-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx === 0 ? "opacity-30 pointer-events-none" : ""}`}
+        aria-label="上一張"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => scroll(1)}
+        className={`absolute top-1/2 -translate-y-1/2 right-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx >= max ? "opacity-30 pointer-events-none" : ""}`}
+        aria-label="下一張"
+      >
+        ›
+      </button>
+
+      {/* 指示點 */}
+      <div className="flex justify-center gap-2 mt-4">
+        {DELIVERY_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIdx(i);
+              scrollRef.current?.scrollTo({ left: i * (scrollRef.current?.clientWidth || 0), behavior: "smooth" });
+            }}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${i === idx ? "bg-[#e60012] w-6" : "bg-[#ccc]"}`}
+            aria-label={`跳到第 ${i + 1} 張`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const R = "#e60012";
 
@@ -244,7 +322,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ═══════ 交車照片 ═══════ */}
+          {/* ═══════ 交車照片 — Carousel ═══════ */}
           <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-[34px] border-t border-[#ddd] max-sm:w-[calc(100%-28px)] max-sm:mt-5">
             <div className="flex items-end justify-between gap-5 mb-5 max-sm:flex-col max-sm:items-start">
               <div>
@@ -253,24 +331,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
-              {[1,2,3,4,5,6].map((n) => (
-                <div key={n} className="aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
-                  <img
-                    src={`/images/delivery-${n}.jpg`}
-                    alt={`交車照片 ${n}`}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    onError={(e) => {
-                      const t = e.currentTarget;
-                      t.style.display = "none";
-                      const p = t.parentElement!;
-                      p.classList.add("flex", "items-center", "justify-center", "text-[#bbb]", "font-bold");
-                      p.textContent = `📸 交車照 ${n}`;
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
+            <DeliveryCarousel />
           </section>
 
           {/* ═══════ 詢問表單區塊 ═══════ */}
