@@ -203,7 +203,7 @@ export const cars: Car[] = [
         "扭力：13.8 kgm",
         "載重：915 kg (同級最強)",
         "貨台：2,565 x 1,660 x 290 mm (三邊可開)",
-        "油耗：12.9 km/L",
+        "油耗：14.7 km/L",
         "保固：三年或十萬公里原廠保固",
       ],
       whoFor: "創業頭家、自營商、物流運輸業者",
@@ -212,6 +212,7 @@ export const cars: Car[] = [
       colors: [
         { name: "珍珠白", hex: "#f0f0f0" },
         { name: "銀灰", hex: "#b0b0b0" },
+        { name: "黑", hex: "#1a1a1a" },
       ],
     },
   },
