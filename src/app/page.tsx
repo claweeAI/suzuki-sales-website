@@ -391,7 +391,7 @@ export default function HomePage() {
                   <img
                     src="/images/avatar.jpg"
                     alt={dealer.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover" style={{ objectPosition: "center 20%" }}
                     onError={(e) => {
                       const t = e.currentTarget;
                       t.style.display = "none";
