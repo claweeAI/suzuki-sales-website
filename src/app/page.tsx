@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
 
 function DeliveryCarousel() {
-  const IMAGES = [1,2,3];
+  const IMAGES = [1,2,3,4,5,6];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
   const max = IMAGES.length - 1;
