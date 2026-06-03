@@ -16,7 +16,7 @@ export default function HomePage() {
     e.preventDefault();
     setSending(true);
     try {
-      await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbwHLQ1emh1ByNmQGwQqeOliUZ45KZCuGy9rxn6x92ytCMmwGdE3e4jQKyWrvyNqzAY/exec", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
