@@ -647,17 +647,6 @@ export default function HomePage() {
             )}
           </section>
 
-          {/* ═══════ 底部 CTA ═══════ */}
-          <section className="w-[calc(100%-88px)] mx-auto mt-[34px] flex items-center justify-between gap-6 p-[26px_30px] bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] max-sm:w-[calc(100%-28px)] max-sm:mt-5 max-sm:flex-col max-sm:items-start">
-            <div>
-              <h2 className="m-0 text-[28px] leading-tight max-sm:text-[23px]">還不確定該選哪台 Suzuki？</h2>
-              <p className="mt-1.5 mb-0 text-[#666]">留下你的預算與用途，我可以先幫你做初步建議。</p>
-            </div>
-            <a href={lineHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center min-w-[220px] h-[54px] px-[26px] bg-[#e60012] text-white rounded-[10px] font-black text-[19px] tracking-[0.08em] no-underline transition-all hover:bg-[#b9000e] hover:-translate-y-px max-sm:w-full max-sm:min-w-0">
-              加 LINE 免費諮詢
-            </a>
-          </section>
-
           <footer className="py-[26px] px-6 text-[#9b9b9b] text-center text-sm">
             © 2026 Suzuki 汽車顧問 {dealer.name}｜凱騰鈴木北投所
           </footer>
