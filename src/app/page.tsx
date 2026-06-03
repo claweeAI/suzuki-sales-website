@@ -441,9 +441,9 @@ export default function HomePage() {
                     aria-label="Threads（即將開通）"
                   >@</span>
                   <span
-                    className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-base"
+                    className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[14px] font-bold"
                     aria-label="Instagram（即將開通）"
-                  >📷</span>
+                  >IG</span>
                 </div>
               </div>
             </div>
