@@ -426,6 +426,20 @@ export default function HomePage() {
                     新車諮詢 / 試乘預約
                   </p>
                 </div>
+
+                {/* FB 粉絲專頁 */}
+                <div className="flex justify-end max-md:justify-center mt-4 md:mt-0">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100092443294776&locale=zh_TW"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[10px] text-white text-[15px] font-bold no-underline transition-all"
+                  >
+                    <span className="text-xl leading-none">f</span>
+                    <span>Facebook 粉絲專頁</span>
+                    <span className="text-sm opacity-70">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
           </section>
