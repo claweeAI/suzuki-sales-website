@@ -116,8 +116,8 @@ export default function HomePage() {
         {/* ── 頁面容器 ── */}
         <div className="max-w-[1180px] mx-auto my-7 bg-[#f5f5f5] rounded-[20px] shadow-[0_26px_80px_rgba(0,0,0,0.28)] overflow-hidden max-sm:my-0 max-sm:rounded-none max-sm:shadow-none">
 
-          {/* ═══════ HERO ═══════ */}
-          <section className="relative min-h-[310px] px-11 pb-[54px] pt-[34px] text-white overflow-hidden max-sm:px-[22px] max-sm:pb-10 max-sm:pt-6"
+          {/* ═══════ HERO — 大頭照 + 資訊 ═══════ */}
+          <section className="relative px-11 pb-[54px] pt-[34px] text-white overflow-hidden max-sm:px-[22px] max-sm:pb-10 max-sm:pt-6"
             style={{
               background: `radial-gradient(circle at 85% 30%, rgba(255,255,255,0.16), transparent 28%), linear-gradient(135deg, ${R}, #bd0010 70%, #9d000b)`,
             }}
@@ -125,24 +125,43 @@ export default function HomePage() {
             <div className="absolute w-[420px] h-[110px] -left-[120px] bottom-12 bg-white/8 skew-x-[-24deg] pointer-events-none max-sm:hidden" />
             <div className="absolute w-[360px] h-[160px] -right-[100px] top-[88px] bg-white/8 skew-x-[-24deg] pointer-events-none max-sm:hidden" />
 
-            <div className="relative z-10">
-              <div className="flex items-center justify-between gap-4 font-bold">
-                <div className="flex items-center gap-3 text-[30px] tracking-[0.02em] max-sm:text-2xl">
-                  <span className="inline-grid place-items-center w-10 h-10 rounded-[10px] bg-white text-[#e60012] font-black text-xl">S</span>
-                  <span>SUZUKI</span>
+            <div className="relative z-10 flex items-center gap-10 max-md:flex-col max-md:text-center">
+              {/* 大頭照 */}
+              <div className="flex-shrink-0">
+                <div className="w-[140px] h-[140px] max-sm:w-[120px] max-sm:h-[120px] rounded-full border-4 border-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.15)] overflow-hidden bg-white/10">
+                  <img
+                    src="/images/avatar.jpg"
+                    alt={dealer.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      t.style.display = "none";
+                      t.parentElement!.classList.add("flex", "items-center", "justify-center", "text-white/60", "font-bold", "text-3xl");
+                      t.parentElement!.textContent = dealer.name.charAt(0);
+                    }}
+                  />
                 </div>
-                <p className="m-0 text-[15px] opacity-95 max-sm:text-[13px] max-sm:text-right max-sm:max-w-[110px]">用心服務・安心購車</p>
               </div>
 
-              <div className="mt-14 text-center max-sm:mt-11">
-                <p className="m-0 text-xl font-bold max-sm:text-lg">Suzuki 汽車顧問</p>
-                <h1 className="m-0 leading-none tracking-[0.06em] font-bold"
-                  style={{ fontSize: "clamp(56px, 9vw, 88px)" }}>
-                  {dealer.name}
-                </h1>
-                <p className="inline-block mt-[22px] pb-3 border-b-2 border-white/80 text-[21px] tracking-[0.18em] max-sm:text-base max-sm:tracking-[0.12em]">
-                  新車諮詢 / 試乘預約
-                </p>
+              <div className="flex-1">
+                <div className="flex items-center justify-between gap-4 font-bold max-md:justify-center">
+                  <div className="flex items-center gap-3 text-[30px] tracking-[0.02em] max-sm:text-2xl">
+                    <span className="inline-grid place-items-center w-10 h-10 rounded-[10px] bg-white text-[#e60012] font-black text-xl">S</span>
+                    <span>SUZUKI</span>
+                  </div>
+                  <p className="m-0 text-[15px] opacity-95 max-sm:text-[13px]">用心服務・安心購車</p>
+                </div>
+
+                <div className="mt-8 max-md:mt-6">
+                  <p className="m-0 text-xl font-bold max-sm:text-lg">Suzuki 汽車顧問</p>
+                  <h1 className="m-0 leading-none tracking-[0.06em] font-bold"
+                    style={{ fontSize: "clamp(44px, 7vw, 72px)" }}>
+                    {dealer.name}
+                  </h1>
+                  <p className="inline-block mt-[18px] pb-3 border-b-2 border-white/80 text-[19px] tracking-[0.18em] max-sm:text-base max-sm:tracking-[0.12em]">
+                    新車諮詢 / 試乘預約
+                  </p>
+                </div>
               </div>
             </div>
           </section>
@@ -191,7 +210,6 @@ export default function HomePage() {
                 <p className="m-0 text-[#666] text-[15px] font-bold">熱門車款</p>
                 <h2 className="mt-0.5 mb-0 text-[28px] leading-tight max-sm:text-[23px]">依照需求，快速找到適合的 Suzuki</h2>
               </div>
-              <a href="#" className="text-[#e60012] font-extrabold no-underline shrink-0 text-sm">查看全部車款 ›</a>
             </div>
 
             {/* 車款卡片 — 3 欄 (6 台) */}
@@ -238,6 +256,35 @@ export default function HomePage() {
                 <span key={s.title} className="grid place-items-center min-h-[72px] p-3 bg-white border border-[#e7e7e7] rounded-[14px] text-[#333] font-extrabold text-center">
                   {s.title}
                 </span>
+              ))}
+            </div>
+          </section>
+
+          {/* ═══════ 交車照片 ═══════ */}
+          <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-[34px] border-t border-[#ddd] max-sm:w-[calc(100%-28px)] max-sm:mt-5">
+            <div className="flex items-end justify-between gap-5 mb-5 max-sm:flex-col max-sm:items-start">
+              <div>
+                <p className="m-0 text-[#666] text-[15px] font-bold">真實交車紀錄</p>
+                <h2 className="mt-0.5 mb-0 text-[28px] leading-tight max-sm:text-[23px]">每一位車主的笑容，都是我最大的動力</h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+              {[1,2,3,4,5,6].map((n) => (
+                <div key={n} className="aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+                  <img
+                    src={`/images/delivery-${n}.jpg`}
+                    alt={`交車照片 ${n}`}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      t.style.display = "none";
+                      const p = t.parentElement!;
+                      p.classList.add("flex", "items-center", "justify-center", "text-[#bbb]", "font-bold");
+                      p.textContent = `📸 交車照 ${n}`;
+                    }}
+                  />
+                </div>
               ))}
             </div>
           </section>
