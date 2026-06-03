@@ -341,17 +341,22 @@ export default function HomePage() {
           height: 84px;
           border-radius: 10px 12px 16px 16px;
           background: linear-gradient(180deg, #cf4436 0%, #c0392b 70%, #8f241b 100%);
-          transform: translateY(5px);
+          box-shadow: inset 0 -12px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(192,57,43,0.12);
+          transform: translateY(6px);
         }
         .car-shape.carry::before {
           left: 18px;
-          top: 22px;
-          width: 42px;
-          height: 24px;
-          border-radius: 5px;
-          box-shadow: 64px 0 0 #f6f6f6;
+          top: 16px;
+          width: 48px;
+          height: 30px;
+          border-radius: 7px 7px 4px 4px;
+          background: linear-gradient(180deg, #fff 0%, #f1f1f1 100%);
+          box-shadow:
+            74px 7px 0 -9px rgba(255,255,255,0.9),
+            74px 25px 0 -11px rgba(0,0,0,0.16),
+            108px 25px 0 -11px rgba(0,0,0,0.16);
         }
-        .car-shape.carry::after { left: 24px; bottom: -10px; box-shadow: 120px 0 0 #202020; }
+        .car-shape.carry::after { left: 30px; bottom: -10px; box-shadow: 118px 0 0 #202020; }
 
         
 
@@ -638,21 +643,21 @@ export default function HomePage() {
       </main>
 
       {/* ═══════ 底部固定 CTA (手機 only) ═══════ */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center gap-3 px-4 py-3 bg-white/90 backdrop-blur-lg border-t border-[#e7e7e7] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center gap-2 px-3 py-2 bg-white/90 backdrop-blur-lg border-t border-[#e7e7e7] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
         <a
           href={phoneHref}
-          className="flex-1 flex items-center justify-center gap-2 h-[50px] bg-[#e60012] text-white rounded-[12px] font-extrabold text-[17px] no-underline transition-all hover:bg-[#b9000e] active:scale-[0.98]"
+          className="flex-1 flex items-center justify-center gap-1.5 h-[40px] bg-[#e60012] text-white rounded-[10px] font-extrabold text-[14px] no-underline transition-all hover:bg-[#b9000e] active:scale-[0.98]"
         >
-          <span className="text-xl">📞</span>
+          <span className="text-lg">📞</span>
           立即撥打
         </a>
         <a
           href={lineHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 h-[50px] bg-[#06c755] text-white rounded-[12px] font-extrabold text-[17px] no-underline transition-all hover:bg-[#05b549] active:scale-[0.98]"
+          className="flex-1 flex items-center justify-center gap-1.5 h-[40px] bg-[#06c755] text-white rounded-[10px] font-extrabold text-[14px] no-underline transition-all hover:bg-[#05b549] active:scale-[0.98]"
         >
-          <span className="text-xl">💬</span>
+          <span className="text-lg">💬</span>
           加 LINE 詢問
         </a>
       </div>
