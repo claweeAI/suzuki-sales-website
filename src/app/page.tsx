@@ -4,12 +4,20 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
 
 function DeliveryCarousel() {
-  const IMAGES = [1,3,4,5,2];
-  const PER_PAGE = 3;
-  const max = Math.ceil(IMAGES.length / PER_PAGE) - 1;
+  const [images, setImages] = useState<string[]>([]);
   const [idx, setIdx] = useState(0);
+  const PER_PAGE = 3;
 
-  const page = IMAGES.slice(idx * PER_PAGE, idx * PER_PAGE + PER_PAGE);
+  useEffect(() => {
+    fetch("/api/delivery")
+      .then((r) => r.json())
+      .then((d) => setImages(d.images || []));
+  }, []);
+
+  if (images.length === 0) return null;
+
+  const max = Math.max(0, Math.ceil(images.length / PER_PAGE) - 1);
+  const page = images.slice(idx * PER_PAGE, idx * PER_PAGE + PER_PAGE);
 
   return (
     <div className="relative">
@@ -324,7 +332,8 @@ export default function HomePage() {
           width: 138px;
           height: 94px;
           border-radius: 8px 8px 16px 16px;
-          background: linear-gradient(180deg, #f20a1e 0%, ${R} 58%, #a9000d 100%);
+          background: linear-gradient(180deg, #5f7042 0%, #475735 58%, #2f3b27 100%);
+          box-shadow: inset 0 -12px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(71,87,53,0.16);
         }
         .car-shape.jimny::before {
           left: 24px;
