@@ -29,11 +29,11 @@ function DeliveryCarousel() {
         }}
       >
         {IMAGES.map((n) => (
-          <div key={n} className="snap-start shrink-0 w-full aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+          <div key={n} className="snap-start shrink-0 w-full rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <img
               src={`/images/delivery-${n}.jpg`}
               alt={`交車照片 ${n}`}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain max-h-[70vh]"
               onError={(e) => {
                 const t = e.currentTarget;
                 t.style.display = "none";
@@ -112,7 +112,8 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
       aria-label={`${car.name} 詳細資訊`}
     >
       <div
-        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-[18px] shadow-[0_26px_80px_rgba(0,0,0,0.35)] max-sm:rounded-[14px]"
+        className="relative w-full max-w-lg max-h-[85vh] bg-white rounded-[18px] shadow-[0_26px_80px_rgba(0,0,0,0.35)] max-sm:rounded-[14px] flex flex-col"
+        style={{ overflow: "hidden" }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -123,8 +124,8 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
           ✕
         </button>
 
-        {/* 圖片 Carousel */}
-        <div className="relative w-full aspect-[16/9] bg-[#e8e8e8] overflow-hidden rounded-t-[18px] max-sm:rounded-t-[14px]">
+        {/* 圖片 Carousel — 固定高度 */}
+        <div className="relative w-full flex-shrink-0" style={{ height: "300px" }}>
           {images.map((img, i) => (
             <img
               key={i}
@@ -156,6 +157,9 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
             <p className="text-white/90 text-sm">{car.subtitle}</p>
           </div>
         </div>
+
+        {/* 內容區 — 可滾動 */}
+        <div className="flex-1 overflow-y-auto">
 
         {/* 車色選擇 */}
         {car.detail.colors && car.detail.colors.length > 0 && (
@@ -209,6 +213,7 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
               用 LINE 詢問
             </a>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -327,7 +332,7 @@ export default function HomePage() {
                   <img
                     src="/images/avatar.jpg"
                     alt={dealer.name}
-                    className="w-full h-full object-cover object-[center_25%]"
+                    className="w-full h-full object-cover object-[center_20%]"
                     onError={(e) => {
                       const t = e.currentTarget;
                       t.style.display = "none";
