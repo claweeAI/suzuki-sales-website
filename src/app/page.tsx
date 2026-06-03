@@ -629,12 +629,32 @@ export default function HomePage() {
             </a>
           </section>
 
-          <footer className="py-[26px] px-6 pb-[34px] text-[#9b9b9b] text-center text-sm">
+          <footer className="pb-[90px] pt-[26px] px-6 text-[#9b9b9b] text-center text-sm">
             © 2026 Suzuki 汽車顧問 {dealer.name}｜凱騰鈴木北投所
           </footer>
 
         </div>
       </main>
+
+      {/* ═══════ 底部固定 CTA ═══════ */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-3 px-4 py-3 bg-white/90 backdrop-blur-lg border-t border-[#e7e7e7] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+        <a
+          href={phoneHref}
+          className="flex-1 flex items-center justify-center gap-2 h-[50px] bg-[#e60012] text-white rounded-[12px] font-extrabold text-[17px] no-underline transition-all hover:bg-[#b9000e] active:scale-[0.98]"
+        >
+          <span className="text-xl">📞</span>
+          立即撥打
+        </a>
+        <a
+          href={lineHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 h-[50px] bg-[#06c755] text-white rounded-[12px] font-extrabold text-[17px] no-underline transition-all hover:bg-[#05b549] active:scale-[0.98]"
+        >
+          <span className="text-xl">💬</span>
+          加 LINE 詢問
+        </a>
+      </div>
 
       {/* ═══════ Modal Overlay — 車款詳細 ═══════ */}
       {modalCar && (
