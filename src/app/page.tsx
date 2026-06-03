@@ -439,7 +439,7 @@ export default function HomePage() {
                   <span
                     className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[17px] font-bold"
                     aria-label="Threads（即將開通）"
-                  >@</span>
+                  >𝕏</span>
                   <span
                     className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[14px] font-bold"
                     aria-label="Instagram（即將開通）"
