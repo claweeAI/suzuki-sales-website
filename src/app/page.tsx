@@ -293,7 +293,7 @@ export default function HomePage() {
           width: 162px;
           height: 92px;
           border-radius: 18px 34px 17px 17px;
-          clip-path: polygon(6% 24%, 25% 8%, 67% 8%, 94% 34%, 98% 78%, 3% 78%, 0 46%);
+          transform: skewX(-5deg) translateY(2px);
         }
         .car-shape.vitara::before {
           left: 44px;
@@ -302,13 +302,13 @@ export default function HomePage() {
           height: 25px;
           border-radius: 10px 18px 6px 6px;
         }
-        .car-shape.vitara::after { left: 25px; bottom: -1px; box-shadow: 96px 0 0 #202020; }
+        .car-shape.vitara::after { left: 25px; bottom: -10px; box-shadow: 96px 0 0 #202020; }
 
         .car-shape.s-cross {
           width: 176px;
           height: 82px;
           border-radius: 24px 46px 18px 18px;
-          clip-path: polygon(3% 34%, 26% 13%, 73% 12%, 98% 42%, 97% 80%, 4% 80%);
+          transform: skewX(-4deg) translateY(6px);
         }
         .car-shape.s-cross::before {
           left: 52px;
@@ -317,7 +317,7 @@ export default function HomePage() {
           height: 23px;
           border-radius: 10px 18px 5px 5px;
         }
-        .car-shape.s-cross::after { left: 29px; bottom: -2px; box-shadow: 104px 0 0 #202020; }
+        .car-shape.s-cross::after { left: 29px; bottom: -10px; box-shadow: 104px 0 0 #202020; }
 
         .car-shape.jimny {
           width: 138px;
@@ -340,7 +340,7 @@ export default function HomePage() {
           height: 84px;
           border-radius: 10px 12px 16px 16px;
           background: linear-gradient(180deg, #cf4436 0%, #c0392b 70%, #8f241b 100%);
-          clip-path: polygon(3% 30%, 36% 30%, 36% 10%, 93% 10%, 98% 78%, 4% 78%);
+          transform: translateY(5px);
         }
         .car-shape.carry::before {
           left: 18px;
@@ -350,7 +350,7 @@ export default function HomePage() {
           border-radius: 5px;
           box-shadow: 64px 0 0 #f6f6f6;
         }
-        .car-shape.carry::after { left: 24px; bottom: -2px; box-shadow: 120px 0 0 #202020; }
+        .car-shape.carry::after { left: 24px; bottom: -10px; box-shadow: 120px 0 0 #202020; }
 
         
 
@@ -391,7 +391,7 @@ export default function HomePage() {
                   <img
                     src="/images/avatar.jpg"
                     alt={dealer.name}
-                    className="w-full h-full object-cover object-[center_10%]"
+                    className="w-full h-full object-cover object-top"
                     onError={(e) => {
                       const t = e.currentTarget;
                       t.style.display = "none";
@@ -629,15 +629,15 @@ export default function HomePage() {
             </a>
           </section>
 
-          <footer className="pb-[90px] pt-[26px] px-6 text-[#9b9b9b] text-center text-sm">
+          <footer className="py-[26px] px-6 text-[#9b9b9b] text-center text-sm">
             © 2026 Suzuki 汽車顧問 {dealer.name}｜凱騰鈴木北投所
           </footer>
 
         </div>
       </main>
 
-      {/* ═══════ 底部固定 CTA ═══════ */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center gap-3 px-4 py-3 bg-white/90 backdrop-blur-lg border-t border-[#e7e7e7] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+      {/* ═══════ 底部固定 CTA (手機 only) ═══════ */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden flex items-center gap-3 px-4 py-3 bg-white/90 backdrop-blur-lg border-t border-[#e7e7e7] shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
         <a
           href={phoneHref}
           className="flex-1 flex items-center justify-center gap-2 h-[50px] bg-[#e60012] text-white rounded-[12px] font-extrabold text-[17px] no-underline transition-all hover:bg-[#b9000e] active:scale-[0.98]"
