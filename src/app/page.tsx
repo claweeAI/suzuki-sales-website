@@ -28,7 +28,7 @@ function DeliveryCarousel() {
               src={`/images/delivery-${n}.jpg`}
               alt={`交車照片 ${n}`}
               className="w-full h-full object-cover"
-              style={{ objectPosition: "center center" }}
+              style={{ objectPosition: "center bottom" }}
               onError={(e) => {
                 const t = e.currentTarget;
                 t.style.display = "none";
