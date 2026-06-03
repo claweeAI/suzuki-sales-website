@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
 
 function DeliveryCarousel() {
-  const IMAGES = [1,2,3,4,5,6];
+  const IMAGES = [1,3,4,5,6];
   const PER_PAGE = 3;
   const max = Math.ceil(IMAGES.length / PER_PAGE) - 1;
   const [idx, setIdx] = useState(0);
@@ -391,7 +391,7 @@ export default function HomePage() {
                   <img
                     src="/images/avatar.jpg"
                     alt={dealer.name}
-                    className="w-full h-full object-cover" style={{ objectPosition: "center 20%" }}
+                    className="w-full h-full object-cover" style={{ objectPosition: "center 40%" }}
                     onError={(e) => {
                       const t = e.currentTarget;
                       t.style.display = "none";
