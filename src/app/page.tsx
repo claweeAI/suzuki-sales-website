@@ -7,33 +7,29 @@ function DeliveryCarousel() {
   const IMAGES = [1,2,3,4,5,6];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
-  const max = IMAGES.length - 1;
+  const max = Math.ceil(IMAGES.length / 3) - 1;
+  const PER_PAGE = 3;
 
   const scroll = (dir: number) => {
     const el = scrollRef.current;
     if (!el) return;
     const nxt = Math.max(0, Math.min(max, idx + dir));
     setIdx(nxt);
-    el.scrollTo({ left: nxt * el.clientWidth, behavior: "smooth" });
+    el.scrollTo({ left: nxt * el.clientWidth / PER_PAGE, behavior: "smooth" });
   };
 
   return (
     <div className="relative">
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4"
-        style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" }}
-        onScroll={(e) => {
-          const el = e.currentTarget;
-          setIdx(Math.round(el.scrollLeft / el.clientWidth));
-        }}
+        className="grid grid-cols-3 gap-4 overflow-hidden"
       >
         {IMAGES.map((n) => (
-          <div key={n} className="snap-start shrink-0 w-full rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+          <div key={n} className="aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <img
               src={`/images/delivery-${n}.jpg`}
               alt={`交車照片 ${n}`}
-              className="w-full h-auto object-contain max-h-[70vh]"
+              className="w-full h-full object-cover"
               onError={(e) => {
                 const t = e.currentTarget;
                 t.style.display = "none";
@@ -46,35 +42,23 @@ function DeliveryCarousel() {
         ))}
       </div>
 
-      {/* 左右箭頭 */}
-      <button
-        onClick={() => scroll(-1)}
-        className={`absolute top-1/2 -translate-y-1/2 left-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx === 0 ? "opacity-30 pointer-events-none" : ""}`}
-        aria-label="上一張"
-      >
-        ‹
-      </button>
-      <button
-        onClick={() => scroll(1)}
-        className={`absolute top-1/2 -translate-y-1/2 right-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx >= max ? "opacity-30 pointer-events-none" : ""}`}
-        aria-label="下一張"
-      >
-        ›
-      </button>
-
-      {/* 指示點 */}
-      <div className="flex justify-center gap-2 mt-4">
-        {IMAGES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              setIdx(i);
-              scrollRef.current?.scrollTo({ left: i * (scrollRef.current?.clientWidth || 0), behavior: "smooth" });
-            }}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${i === idx ? "bg-[#e60012] w-6" : "bg-[#ccc]"}`}
-            aria-label={`跳到第 ${i + 1} 張`}
-          />
-        ))}
+      {/* 左右箭頭 & 頁數指示 */}
+      <div className="flex items-center justify-center gap-4 mt-5">
+        <button
+          onClick={() => scroll(-1)}
+          className={`grid place-items-center w-10 h-10 rounded-full bg-white border border-[#e0e0e0] shadow-sm text-[#333] text-lg transition-all hover:bg-[#f5f5f5] ${idx === 0 ? "opacity-30 pointer-events-none" : ""}`}
+          aria-label="上一頁"
+        >
+          ‹
+        </button>
+        <span className="text-[#999] text-sm font-bold">{idx + 1} / {max + 1}</span>
+        <button
+          onClick={() => scroll(1)}
+          className={`grid place-items-center w-10 h-10 rounded-full bg-white border border-[#e0e0e0] shadow-sm text-[#333] text-lg transition-all hover:bg-[#f5f5f5] ${idx >= max ? "opacity-30 pointer-events-none" : ""}`}
+          aria-label="下一頁"
+        >
+          ›
+        </button>
       </div>
     </div>
   );
@@ -332,7 +316,7 @@ export default function HomePage() {
                   <img
                     src="/images/avatar.jpg"
                     alt={dealer.name}
-                    className="w-full h-full object-cover object-[center_20%]"
+                    className="w-full h-full object-cover object-[center_10%]"
                     onError={(e) => {
                       const t = e.currentTarget;
                       t.style.display = "none";
