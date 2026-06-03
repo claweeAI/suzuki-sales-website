@@ -343,22 +343,22 @@ export default function HomePage() {
           background:
             linear-gradient(180deg, #fff 0%, #f1f1f1 100%) 38px 26px / 28px 19px no-repeat,
             linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 22px 18px / 68px 56px no-repeat,
-            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 84px 44px / 82px 30px no-repeat,
-            linear-gradient(90deg, #9b241b 0%, #9b241b 100%) 92px 38px / 60px 6px no-repeat;
+            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 84px 53px / 86px 21px no-repeat;
           box-shadow: 0 10px 18px rgba(192,57,43,0.12);
           transform: translateY(6px);
         }
         .car-shape.carry::before {
-          left: 22px;
-          top: 18px;
-          width: 68px;
-          height: 56px;
-          border-radius: 14px 8px 8px 12px;
+          left: 84px;
+          top: 39px;
+          width: 82px;
+          height: 31px;
+          border-top: 6px solid #d84a3e;
+          border-right: 6px solid #a72b22;
+          border-left: 6px solid #a72b22;
+          border-bottom: 10px solid #98241c;
+          border-radius: 2px 2px 7px 7px;
           background: transparent;
-          box-shadow:
-            inset 0 -12px 0 rgba(0,0,0,0.15),
-            82px 26px 0 -3px rgba(0,0,0,0.15),
-            108px 26px 0 -3px rgba(0,0,0,0.15);
+          box-shadow: none;
         }
         .car-shape.carry::after { left: 36px; bottom: -8px; box-shadow: 112px 0 0 #202020; }
 
