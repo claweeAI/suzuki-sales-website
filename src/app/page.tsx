@@ -427,34 +427,23 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* 社群按鈕 — 一排 */}
-                <div className="flex flex-wrap justify-end max-md:justify-center gap-3 mt-4 md:mt-0">
+                {/* 社群按鈕 — 僅 logo 小圓 */}
+                <div className="flex justify-end max-md:justify-center gap-2 mt-4 md:mt-0">
                   <a
                     href="https://www.facebook.com/profile.php?id=100092443294776&locale=zh_TW"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[8px] text-white text-[13px] font-bold no-underline transition-all"
-                  >
-                    <span className="text-base leading-none">f</span>
-                    Facebook
-                  </a>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/8 rounded-[8px] text-white/50 text-[13px] font-bold">
-                    <span className="text-base leading-none">@</span>
-                    Threads
-                  </span>
-                  <a
-                    href={lineHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[8px] text-white text-[13px] font-bold no-underline transition-all"
-                  >
-                    <span className="text-base leading-none">💬</span>
-                    LINE
-                  </a>
-                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/8 rounded-[8px] text-white/50 text-[13px] font-bold">
-                    <span className="text-base leading-none">📷</span>
-                    Instagram
-                  </span>
+                    className="grid place-items-center w-9 h-9 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-full text-white text-[17px] font-bold no-underline transition-all"
+                    aria-label="Facebook 粉絲專頁"
+                  >f</a>
+                  <span
+                    className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[17px] font-bold"
+                    aria-label="Threads（即將開通）"
+                  >@</span>
+                  <span
+                    className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-base"
+                    aria-label="Instagram（即將開通）"
+                  >📷</span>
                 </div>
               </div>
             </div>
