@@ -145,11 +145,10 @@ export default function HomePage() {
 
               <div className="flex-1">
                 <div className="flex items-center justify-between gap-4 font-bold max-md:justify-center">
-                  <div className="flex items-center gap-3 text-[30px] tracking-[0.02em] max-sm:text-2xl">
-                    <span className="inline-grid place-items-center w-10 h-10 rounded-[10px] bg-white text-[#e60012] font-black text-xl">S</span>
-                    <span>SUZUKI</span>
+                  <div className="flex items-center gap-4 max-sm:gap-3">
+                    <img src="/suzuki-logo.svg" alt="Suzuki" className="h-[42px] w-auto max-sm:h-[34px]" />
+                    <p className="m-0 text-[15px] opacity-95 max-sm:text-[13px]">用心服務・安心購車</p>
                   </div>
-                  <p className="m-0 text-[15px] opacity-95 max-sm:text-[13px]">用心服務・安心購車</p>
                 </div>
 
                 <div className="mt-8 max-md:mt-6">

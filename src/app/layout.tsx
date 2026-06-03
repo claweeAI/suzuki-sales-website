@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/suzuki-logo.svg",
   },
 };
 
