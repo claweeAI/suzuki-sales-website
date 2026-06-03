@@ -339,24 +339,28 @@ export default function HomePage() {
         .car-shape.carry {
           width: 174px;
           height: 84px;
-          border-radius: 10px 12px 16px 16px;
-          background: linear-gradient(180deg, #cf4436 0%, #c0392b 70%, #8f241b 100%);
-          box-shadow: inset 0 -12px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(192,57,43,0.12);
+          border-radius: 0;
+          background:
+            linear-gradient(180deg, #fff 0%, #f1f1f1 100%) 38px 26px / 28px 19px no-repeat,
+            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 22px 18px / 68px 56px no-repeat,
+            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 84px 44px / 82px 30px no-repeat,
+            linear-gradient(90deg, #9b241b 0%, #9b241b 100%) 92px 38px / 60px 6px no-repeat;
+          box-shadow: 0 10px 18px rgba(192,57,43,0.12);
           transform: translateY(6px);
         }
         .car-shape.carry::before {
-          left: 18px;
-          top: 16px;
-          width: 48px;
-          height: 30px;
-          border-radius: 7px 7px 4px 4px;
-          background: linear-gradient(180deg, #fff 0%, #f1f1f1 100%);
+          left: 22px;
+          top: 18px;
+          width: 68px;
+          height: 56px;
+          border-radius: 14px 8px 8px 12px;
+          background: transparent;
           box-shadow:
-            74px 7px 0 -9px rgba(255,255,255,0.9),
-            74px 25px 0 -11px rgba(0,0,0,0.16),
-            108px 25px 0 -11px rgba(0,0,0,0.16);
+            inset 0 -12px 0 rgba(0,0,0,0.15),
+            82px 26px 0 -3px rgba(0,0,0,0.15),
+            108px 26px 0 -3px rgba(0,0,0,0.15);
         }
-        .car-shape.carry::after { left: 30px; bottom: -10px; box-shadow: 118px 0 0 #202020; }
+        .car-shape.carry::after { left: 36px; bottom: -8px; box-shadow: 112px 0 0 #202020; }
 
         
 
@@ -439,7 +443,7 @@ export default function HomePage() {
                   <span
                     className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[17px] font-bold"
                     aria-label="Threads（即將開通）"
-                  >𝕏</span>
+                  >@</span>
                   <span
                     className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[14px] font-bold"
                     aria-label="Instagram（即將開通）"
