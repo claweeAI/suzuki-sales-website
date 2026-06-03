@@ -427,18 +427,34 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* FB 粉絲專頁 */}
-                <div className="flex justify-end max-md:justify-center mt-4 md:mt-0">
+                {/* 社群按鈕 — 一排 */}
+                <div className="flex flex-wrap justify-end max-md:justify-center gap-3 mt-4 md:mt-0">
                   <a
                     href="https://www.facebook.com/profile.php?id=100092443294776&locale=zh_TW"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[10px] text-white text-[15px] font-bold no-underline transition-all"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[8px] text-white text-[13px] font-bold no-underline transition-all"
                   >
-                    <span className="text-xl leading-none">f</span>
-                    <span>Facebook 粉絲專頁</span>
-                    <span className="text-sm opacity-70">↗</span>
+                    <span className="text-base leading-none">f</span>
+                    Facebook
                   </a>
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/8 rounded-[8px] text-white/50 text-[13px] font-bold">
+                    <span className="text-base leading-none">@</span>
+                    Threads
+                  </span>
+                  <a
+                    href={lineHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-[8px] text-white text-[13px] font-bold no-underline transition-all"
+                  >
+                    <span className="text-base leading-none">💬</span>
+                    LINE
+                  </a>
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/8 rounded-[8px] text-white/50 text-[13px] font-bold">
+                    <span className="text-base leading-none">📷</span>
+                    Instagram
+                  </span>
                 </div>
               </div>
             </div>
@@ -566,7 +582,7 @@ export default function HomePage() {
               </div>
             ) : (
               <div className="grid grid-cols-[280px_1fr] gap-[34px] items-stretch max-lg:grid-cols-1">
-                <aside className="grid place-items-center content-center min-h-[320px] p-6 border border-[#e7e7e7] rounded-2xl text-center bg-white max-lg:min-h-[auto] max-lg:py-8">
+                <aside className="grid place-items-center content-center min-h-[320px] p-6 border border-[#e7e7e7] rounded-2xl text-center bg-white max-lg:min-h-[auto] max-lg:py-8 max-sm:hidden">
                   <img
                     src="/images/line-qr.jpg"
                     alt="LINE QR Code"
