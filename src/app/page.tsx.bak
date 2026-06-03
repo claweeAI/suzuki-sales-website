@@ -3,11 +3,12 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
 
+const DELIVERY_IMAGES = [1,2,3];
+
 function DeliveryCarousel() {
-  const IMAGES = [1,2,3];
   const scrollRef = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
-  const max = IMAGES.length - 1;
+  const max = DELIVERY_IMAGES.length - 1;
 
   const scroll = (dir: number) => {
     const el = scrollRef.current;
@@ -28,7 +29,7 @@ function DeliveryCarousel() {
           setIdx(Math.round(el.scrollLeft / el.clientWidth));
         }}
       >
-        {IMAGES.map((n) => (
+        {DELIVERY_IMAGES.map((n) => (
           <div key={n} className="snap-start shrink-0 w-full aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <img
               src={`/images/delivery-${n}.jpg`}
@@ -64,7 +65,85 @@ function DeliveryCarousel() {
 
       {/* 指示點 */}
       <div className="flex justify-center gap-2 mt-4">
-        {IMAGES.map((_, i) => (
+        {DELIVERY_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIdx(i);
+              scrollRef.current?.scrollTo({ left: i * (scrollRef.current?.clientWidth || 0), behavior: "smooth" });
+            }}
+            className={`w-2.5 h-2.5 rounded-full transition-all ${i === idx ? "bg-[#e60012] w-6" : "bg-[#ccc]"}`}
+            aria-label={`跳到第 ${i + 1} 張`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const DELIVERY_IMAGES = [1,2,3];
+
+function DeliveryCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [idx, setIdx] = useState(0);
+  const max = DELIVERY_IMAGES.length - 1;
+
+  const scroll = (dir: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const nxt = Math.max(0, Math.min(max, idx + dir));
+    setIdx(nxt);
+    el.scrollTo({ left: nxt * el.clientWidth, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-4"
+        style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" }}
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          setIdx(Math.round(el.scrollLeft / el.clientWidth));
+        }}
+      >
+        {DELIVERY_IMAGES.map((n) => (
+          <div key={n} className="snap-start shrink-0 w-full aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
+            <img
+              src={`/images/delivery-${n}.jpg`}
+              alt={`交車照片 ${n}`}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const t = e.currentTarget;
+                t.style.display = "none";
+                const p = t.parentElement!;
+                p.classList.add("flex", "items-center", "justify-center", "text-[#bbb]", "font-bold");
+                p.textContent = `📸 交車照 ${n}`;
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* 左右箭頭 */}
+      <button
+        onClick={() => scroll(-1)}
+        className={`absolute top-1/2 -translate-y-1/2 left-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx === 0 ? "opacity-30 pointer-events-none" : ""}`}
+        aria-label="上一張"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => scroll(1)}
+        className={`absolute top-1/2 -translate-y-1/2 right-2 z-10 grid place-items-center w-10 h-10 rounded-full bg-white/80 shadow-md text-[#333] text-lg transition-all hover:bg-white hover:scale-110 ${idx >= max ? "opacity-30 pointer-events-none" : ""}`}
+        aria-label="下一張"
+      >
+        ›
+      </button>
+
+      {/* 指示點 */}
+      <div className="flex justify-center gap-2 mt-4">
+        {DELIVERY_IMAGES.map((_, i) => (
           <button
             key={i}
             onClick={() => {
@@ -81,139 +160,6 @@ function DeliveryCarousel() {
 }
 
 const R = "#e60012";
-
-
-/* ═══════ Modal 車款詳細 ═══════ */
-function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: () => void; onInterest: () => void; lineHref: string }) {
-  const [imgIdx, setImgIdx] = useState(0);
-
-  const images = car.detail.images || [car.id];
-  const imgCount = images.length;
-
-  const handler = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Escape") onClose();
-  }, [onClose]);
-
-  useEffect(() => {
-    document.addEventListener("keydown", handler);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handler);
-      document.body.style.overflow = "";
-    };
-  }, [handler]);
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${car.name} 詳細資訊`}
-    >
-      <div
-        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-[18px] shadow-[0_26px_80px_rgba(0,0,0,0.35)] max-sm:rounded-[14px]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 z-20 grid place-items-center w-9 h-9 rounded-full bg-black/30 text-white text-lg transition-colors hover:bg-black/50 sm:top-4 sm:right-4"
-          aria-label="關閉"
-        >
-          ✕
-        </button>
-
-        {/* 圖片 Carousel */}
-        <div className="relative w-full aspect-[16/9] bg-[#e8e8e8] overflow-hidden rounded-t-[18px] max-sm:rounded-t-[14px]">
-          {images.map((img, i) => (
-            <img
-              key={i}
-              src={"/images/" + img + ".jpg"}
-              alt={`${car.name} ${i + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${i === imgIdx ? "opacity-100" : "opacity-0"}`}
-              onError={(e) => { const t = e.currentTarget; t.style.display = "none"; }}
-            />
-          ))}
-
-          {imgCount > 1 && (
-            <>
-              <button onClick={() => setImgIdx(p => Math.max(0, p - 1))}
-                className={"absolute top-1/2 -translate-y-1/2 left-2 z-10 grid place-items-center w-9 h-9 rounded-full bg-white/80 shadow text-[#333] transition-all hover:bg-white " + (imgIdx === 0 ? "hidden" : "")}
-                aria-label="上一張">‹</button>
-              <button onClick={() => setImgIdx(p => Math.min(imgCount - 1, p + 1))}
-                className={"absolute top-1/2 -translate-y-1/2 right-2 z-10 grid place-items-center w-9 h-9 rounded-full bg-white/80 shadow text-[#333] transition-all hover:bg-white " + (imgIdx >= imgCount - 1 ? "hidden" : "")}
-                aria-label="下一張">›</button>
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
-                {images.map((_, i) => (
-                  <span key={i} className={"w-2 h-2 rounded-full transition-all " + (i === imgIdx ? "bg-white w-4" : "bg-white/50")} />
-                ))}
-              </div>
-            </>
-          )}
-
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 pt-10 z-10">
-            <h3 className="text-white text-2xl font-bold">{car.name}</h3>
-            <p className="text-white/90 text-sm">{car.subtitle}</p>
-          </div>
-        </div>
-
-        {/* 車色選擇 */}
-        {car.detail.colors && car.detail.colors.length > 0 && (
-          <div className="px-5 pt-4 sm:px-6">
-            <p className="text-[13px] font-extrabold text-[#333] mb-2">選擇顏色</p>
-            <div className="flex flex-wrap gap-2.5">
-              {car.detail.colors.map((c: { name: string; hex: string }) => (
-                <div key={c.name} className="flex items-center gap-1.5 px-3 py-1.5 border border-[#e0e0e0] rounded-full text-[12px] text-[#555] font-bold">
-                  <span className="inline-block w-3.5 h-3.5 rounded-full" style={{ background: c.hex }} />
-                  {c.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* 資訊 */}
-        <div className="p-5 sm:p-6">
-          <div className="flex items-baseline justify-between gap-2 mb-3">
-            <span className="text-[#666] text-sm font-bold">建議售價</span>
-            <span className="text-[#e60012] text-2xl font-extrabold">{car.price}</span>
-          </div>
-          <p className="text-[#e60012] font-extrabold text-[17px] leading-tight mb-4">{car.detail.tagline}</p>
-
-          <div className="mb-4">
-            <p className="mb-2 text-[15px] font-extrabold text-[#333]">主要規格</p>
-            <ul className="m-0 pl-[18px] space-y-1.5 text-[14px] text-[#555]">
-              {car.detail.specs.map((spec, idx) => <li key={idx}>{spec}</li>)}
-            </ul>
-          </div>
-
-          <div className="mb-4 p-3 bg-[#f5f5f5] rounded-[10px]">
-            <p className="m-0 text-[13px] text-[#666]"><strong>適合誰：</strong>{car.detail.whoFor}</p>
-          </div>
-
-          {car.detail.monthlyPromo && (
-            <div className="mb-5 p-3 rounded-[10px] text-white text-[14px] leading-relaxed font-extrabold"
-              style={{ background: "linear-gradient(135deg, " + R + ", #bd0010)" }}>
-              <span className="inline-block mr-1.5">🎉</span>
-              {car.detail.monthlyPromo}
-            </div>
-          )}
-
-          <div className="flex items-center gap-3">
-            <button onClick={onInterest}
-              className="flex-1 flex items-center justify-center h-[48px] bg-[#e60012] text-white rounded-[10px] font-extrabold text-[15px] no-underline transition-all hover:bg-[#b9000e] hover:-translate-y-px cursor-pointer border-0">
-              我有興趣
-            </button>
-            <a href={lineHref} target="_blank" rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center h-[48px] border-2 border-[#e60012] text-[#e60012] rounded-[10px] font-extrabold text-[15px] no-underline transition-all hover:bg-[#e60012] hover:text-white">
-              用 LINE 詢問
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage() {
   const [form, setForm] = useState({ name: "", contact: "", car: "", usage: "", budget: "" });
@@ -418,6 +364,10 @@ export default function HomePage() {
                   car.id === "carry" ? "carry" : "";
                 return (
                   <div key={car.id}>
+                    <div
+                      onClick={() => openModal(car)}
+                      className="cursor-pointer"
+                    >
                       <button onClick={() => openModal(car)} className="w-full min-h-[286px] p-[26px_20px] text-center bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,20,20,0.12)] cursor-pointer" aria-haspopup="dialog">
                         <div className={`car-shape ${shapeClass}`} />
                         <h3 className="mt-5 mb-1 text-[26px] font-bold text-[#202020]">{car.name}</h3>
@@ -425,6 +375,7 @@ export default function HomePage() {
                         <p className="m-0 mt-1 text-[#666]">{car.description}</p>
                         <p className="m-0 mt-3 text-[18px] font-extrabold text-[#e60012]">{car.price}</p>
                       </button>
+                    </div>
                   </div>
                 );
               })}
@@ -579,6 +530,76 @@ export default function HomePage() {
           closeModal();
           setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 100);
         }} lineHref={lineHref} />
+      )}
+    </>
+
+            {/* Modal 內容 */}
+            <div className="p-5 sm:p-6">
+              {/* 價格 */}
+              <div className="flex items-baseline justify-between gap-2 mb-3">
+                <span className="text-[#666] text-sm font-bold">建議售價</span>
+                <span className="text-[#e60012] text-2xl font-extrabold">{modalCar.price}</span>
+              </div>
+
+              {/* Tagline */}
+              <p className="text-[#e60012] font-extrabold text-[17px] leading-tight mb-4">
+                {modalCar.detail.tagline}
+              </p>
+
+              {/* 主要規格列表 */}
+              <div className="mb-4">
+                <p className="mb-2 text-[15px] font-extrabold text-[#333]">主要規格</p>
+                <ul className="m-0 pl-[18px] space-y-1.5 text-[14px] text-[#555]">
+                  {modalCar.detail.specs.map((spec, idx) => (
+                    <li key={idx}>{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 適合誰 */}
+              <div className="mb-4 p-3 bg-[#f5f5f5] rounded-[10px]">
+                <p className="m-0 text-[13px] text-[#666]">
+                  <strong>適合誰：</strong>{modalCar.detail.whoFor}
+                </p>
+              </div>
+
+              {/* 本月優惠 */}
+              {modalCar.detail.monthlyPromo && (
+                <div className="mb-5 p-3 rounded-[10px] text-white text-[14px] leading-relaxed font-extrabold"
+                  style={{ background: `linear-gradient(135deg, ${R}, #bd0010)` }}
+                >
+                  <span className="inline-block mr-1.5">🎉</span>
+                  {modalCar.detail.monthlyPromo}
+                </div>
+              )}
+
+              {/* CTA 按鈕 */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    update("car", modalCar.name);
+                    closeModal();
+                    // Scroll to contact form
+                    setTimeout(() => {
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                  }}
+                  className="flex-1 flex items-center justify-center h-[48px] bg-[#e60012] text-white rounded-[10px] font-extrabold text-[15px] no-underline transition-all hover:bg-[#b9000e] hover:-translate-y-px cursor-pointer border-0"
+                >
+                  我有興趣
+                </button>
+                <a
+                  href={lineHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center h-[48px] border-2 border-[#e60012] text-[#e60012] rounded-[10px] font-extrabold text-[15px] no-underline transition-all hover:bg-[#e60012] hover:text-white"
+                >
+                  用 LINE 詢問
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
