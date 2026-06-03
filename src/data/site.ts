@@ -51,7 +51,7 @@ export const cars: Car[] = [
       ],
       whoFor: "重視環保、想降低日常通勤成本的科技先驅",
       monthlyPromo: "試乘加碼抽豪華郵輪雙人套票，歡迎預約試乘",
-      images: ["e-vitara", "e-vitara"],
+      images: ["e-vitara", "e-vitara", "e-vitara"],
       colors: [
         { name: "珍珠白", hex: "#f0f0f0" },
         { name: "星綻黑", hex: "#1a1a1a" },
@@ -78,7 +78,7 @@ export const cars: Car[] = [
       ],
       whoFor: "首購族、市區通勤族、機械車位也沒問題",
       monthlyPromo: "本月購車享 60 萬 0 利率分期，歡迎來店賞車試乘，贈送行車紀錄器",
-      images: ["swift"],
+      images: ["swift", "swift", "swift"],
       colors: [
         { name: "珍珠白", hex: "#f5f5f5" },
         { name: "星塵灰", hex: "#7a7a7a" },
@@ -108,7 +108,7 @@ export const cars: Car[] = [
       ],
       whoFor: "戶外玩家、露營愛好者、想要個性化車款的你",
       monthlyPromo: "本月送丙式車體險 + 50 萬 36 期低利率，歡迎來店賞車",
-      images: ["jimny"],
+      images: ["jimny", "jimny", "jimny"],
       colors: [
         { name: "珍珠白", hex: "#f0f0f0" },
         { name: "復古綠", hex: "#556b2f" },
@@ -138,6 +138,13 @@ export const cars: Car[] = [
       ],
       whoFor: "熱愛戶外活動的小家庭，想要 SUV 機能與駕駛樂趣",
       monthlyPromo: "本月購車享 70 萬 0 利率，歡迎來店賞車",
+      images: ["vitara", "vitara", "vitara"],
+      colors: [
+        { name: "珍珠白", hex: "#f0f0f0" },
+        { name: "星綻黑", hex: "#1a1a1a" },
+        { name: "銀灰", hex: "#b0b0b0" },
+        { name: "深藍", hex: "#1a3a5c" },
+      ],
     },
   },
   {
@@ -160,6 +167,13 @@ export const cars: Car[] = [
       ],
       whoFor: "經常長途出遊、需要大空間的大家庭或露營愛好者",
       monthlyPromo: "本月專案：享 60 萬 0 利率，歡迎來店賞車試乘",
+      images: ["s-cross", "s-cross", "s-cross"],
+      colors: [
+        { name: "珍珠白", hex: "#f0f0f0" },
+        { name: "星綻黑", hex: "#1a1a1a" },
+        { name: "星塵灰", hex: "#7a7a7a" },
+        { name: "深藍", hex: "#1a3a5c" },
+      ],
     },
   },
   {
@@ -182,6 +196,11 @@ export const cars: Car[] = [
       ],
       whoFor: "創業頭家、自營商、物流運輸業者",
       monthlyPromo: "商用車專案：萬元購車金，低月付方案實施中，歡迎來店洽詢",
+      images: ["carry", "carry", "carry"],
+      colors: [
+        { name: "珍珠白", hex: "#f0f0f0" },
+        { name: "銀灰", hex: "#b0b0b0" },
+      ],
     },
   },
 ];
