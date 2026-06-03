@@ -78,22 +78,7 @@ export default function HomePage() {
         .car-shape.carry::before { width: 80px; left: 44px; border-radius: 6px; height: 24px; top: 12px; }
         .car-shape.carry::after { left: 26px; box-shadow: 118px 0 0 #222; }
 
-        .fake-qr {
-          display: grid;
-          grid-template-columns: repeat(6, 18px);
-          grid-auto-rows: 18px;
-          gap: 5px;
-          padding: 16px;
-          background: #fff;
-          border: 10px solid #fff;
-          box-shadow: 0 0 0 1px #e7e7e7;
-        }
-        .fake-qr span { background: #e7e7e7; }
-        .fake-qr span:nth-child(3n+1),
-        .fake-qr span:nth-child(4n),
-        .fake-qr span:nth-child(7),
-        .fake-qr span:nth-child(11),
-        .fake-qr span:nth-child(16) { background: #111; }
+        
 
         /* Modal overlay animation */
         .modal-overlay {
@@ -309,14 +294,31 @@ export default function HomePage() {
               </div>
             ) : (
               <div className="grid grid-cols-[280px_1fr] gap-[34px] items-stretch max-lg:grid-cols-1">
-                <aside className="grid place-items-center content-center min-h-[320px] p-6 border border-dashed border-[#bdbdbd] rounded-2xl text-center bg-[#fafafa] max-lg:min-h-[260px]">
-                  <div className="fake-qr">
-                    {Array.from({ length: 18 }).map((_, i) => (
-                      <span key={i} />
-                    ))}
-                  </div>
-                  <h3 className="mt-5 mb-1 text-[22px] font-bold text-[#202020]">掃描加入 LINE</h3>
-                  <p className="m-0 text-[#666]">快速聯繫・即時回覆</p>
+                <aside className="grid place-items-center content-center min-h-[320px] p-6 border border-[#e7e7e7] rounded-2xl text-center bg-white max-lg:min-h-[auto] max-lg:py-8">
+                  <img
+                    src="/images/line-qr.jpg"
+                    alt="LINE QR Code"
+                    className="w-[180px] h-[180px] object-contain rounded-xl"
+                    onError={(e) => {
+                      const t = e.currentTarget;
+                      t.style.display = "none";
+                      const p = t.parentElement!;
+                      p.innerHTML = `
+                        <div class="w-[180px] h-[180px] bg-[#f5f5f5] rounded-xl flex items-center justify-center text-[#999] text-sm">
+                          QR Code
+                        </div>
+                        <p class="mt-4 text-[22px] font-bold text-[#202020]">加 LINE 諮詢</p>
+                        <a href="${lineHref}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 px-6 py-3 bg-[#06c755] text-white rounded-lg font-bold text-sm no-underline hover:opacity-90">
+                          點我加 LINE
+                        </a>
+                      `;
+                    }}
+                  />
+                  <h3 className="mt-4 text-[22px] font-bold text-[#202020]">加 LINE 諮詢</h3>
+                  <p className="m-0 text-[#666] text-sm">快速聯繫・即時回覆</p>
+                  <a href={lineHref} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 px-6 py-3 bg-[#06c755] text-white rounded-lg font-bold text-sm no-underline hover:opacity-90 transition-opacity">
+                    點我加 LINE
+                  </a>
                 </aside>
 
                 <form onSubmit={handleSubmit} className="grid gap-[14px]">
