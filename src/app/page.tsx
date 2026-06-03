@@ -5,26 +5,16 @@ import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/
 
 function DeliveryCarousel() {
   const IMAGES = [1,2,3,4,5,6];
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [idx, setIdx] = useState(0);
-  const max = Math.ceil(IMAGES.length / 3) - 1;
   const PER_PAGE = 3;
+  const max = Math.ceil(IMAGES.length / PER_PAGE) - 1;
+  const [idx, setIdx] = useState(0);
 
-  const scroll = (dir: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const nxt = Math.max(0, Math.min(max, idx + dir));
-    setIdx(nxt);
-    el.scrollTo({ left: nxt * el.clientWidth / PER_PAGE, behavior: "smooth" });
-  };
+  const page = IMAGES.slice(idx * PER_PAGE, idx * PER_PAGE + PER_PAGE);
 
   return (
     <div className="relative">
-      <div
-        ref={scrollRef}
-        className="grid grid-cols-3 gap-4 overflow-hidden"
-      >
-        {IMAGES.map((n) => (
+      <div className="grid grid-cols-3 gap-4 max-sm:grid-cols-1">
+        {page.map((n) => (
           <div key={n} className="aspect-[4/3] rounded-[14px] overflow-hidden bg-[#e8e8e8] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <img
               src={`/images/delivery-${n}.jpg`}
@@ -42,10 +32,10 @@ function DeliveryCarousel() {
         ))}
       </div>
 
-      {/* 左右箭頭 & 頁數指示 */}
+      {/* 左右箭頭 & 頁數 */}
       <div className="flex items-center justify-center gap-4 mt-5">
         <button
-          onClick={() => scroll(-1)}
+          onClick={() => setIdx(p => Math.max(0, p - 1))}
           className={`grid place-items-center w-10 h-10 rounded-full bg-white border border-[#e0e0e0] shadow-sm text-[#333] text-lg transition-all hover:bg-[#f5f5f5] ${idx === 0 ? "opacity-30 pointer-events-none" : ""}`}
           aria-label="上一頁"
         >
@@ -53,7 +43,7 @@ function DeliveryCarousel() {
         </button>
         <span className="text-[#999] text-sm font-bold">{idx + 1} / {max + 1}</span>
         <button
-          onClick={() => scroll(1)}
+          onClick={() => setIdx(p => Math.min(max, p + 1))}
           className={`grid place-items-center w-10 h-10 rounded-full bg-white border border-[#e0e0e0] shadow-sm text-[#333] text-lg transition-all hover:bg-[#f5f5f5] ${idx >= max ? "opacity-30 pointer-events-none" : ""}`}
           aria-label="下一頁"
         >
@@ -237,45 +227,130 @@ export default function HomePage() {
       <style>{`
         .car-shape {
           position: relative;
-          width: 148px;
-          height: 82px;
+          width: 156px;
+          height: 86px;
           margin: 12px auto 0;
-          background: ${R};
-          border-radius: 28px 36px 18px 18px;
-          box-shadow: inset 0 -12px 0 rgba(0,0,0,0.18);
+          background: linear-gradient(180deg, #f20a1e 0%, ${R} 64%, #b9000e 100%);
+          border-radius: 30px 38px 18px 18px;
+          box-shadow: inset 0 -12px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(230,0,18,0.12);
         }
         .car-shape::before {
           content: "";
           position: absolute;
-          left: 36px;
+          left: 38px;
           top: 14px;
-          width: 72px;
+          width: 74px;
           height: 28px;
-          background: #f6f6f6;
-          border-radius: 18px 18px 6px 6px;
-          opacity: 0.9;
+          background: linear-gradient(180deg, #fff 0%, #f1f1f1 100%);
+          border-radius: 18px 18px 7px 7px;
+          box-shadow: inset -18px 0 0 rgba(0,0,0,0.08);
         }
         .car-shape::after {
           content: "";
           position: absolute;
-          left: 22px;
-          bottom: -10px;
-          width: 22px;
-          height: 22px;
+          left: 24px;
+          bottom: -11px;
+          width: 23px;
+          height: 23px;
           border-radius: 999px;
-          background: #222;
-          box-shadow: 82px 0 0 #222;
+          background: #202020;
+          box-shadow: 88px 0 0 #202020;
         }
-        .car-shape.swift { border-radius: 32px 40px 20px 20px; height: 78px; }
-        .car-shape.vitara { border-radius: 18px 26px 16px 16px; height: 88px; }
-        .car-shape.jimny { border-radius: 8px 8px 14px 14px; height: 92px; width: 138px; }
-        .car-shape.e-vitara,
-        .car-shape.s-cross { border-radius: 22px 34px 18px 18px; height: 84px; }
-        .car-shape.e-vitara::before { width: 60px; left: 44px; border-radius: 14px 14px 4px 4px; }
-        .car-shape.s-cross::before { width: 66px; left: 42px; border-radius: 14px 14px 4px 4px; }
-        .car-shape.carry { border-radius: 10px 10px 14px 14px; height: 82px; width: 168px; background: #c0392b; }
-        .car-shape.carry::before { width: 80px; left: 44px; border-radius: 6px; height: 24px; top: 12px; }
-        .car-shape.carry::after { left: 26px; box-shadow: 118px 0 0 #222; }
+        .car-shape.swift {
+          width: 142px;
+          height: 76px;
+          border-radius: 44px 50px 22px 24px;
+          transform: translateY(6px);
+        }
+        .car-shape.swift::before {
+          left: 38px;
+          top: 13px;
+          width: 58px;
+          height: 24px;
+          border-radius: 18px 18px 8px 8px;
+        }
+        .car-shape.swift::after { left: 22px; box-shadow: 78px 0 0 #202020; }
+
+        .car-shape.e-vitara {
+          width: 166px;
+          height: 84px;
+          border-radius: 26px 44px 18px 18px;
+        }
+        .car-shape.e-vitara::before {
+          left: 48px;
+          top: 13px;
+          width: 66px;
+          height: 25px;
+          border-radius: 16px 20px 6px 6px;
+        }
+        .car-shape.e-vitara::after { left: 25px; box-shadow: 98px 0 0 #202020; }
+        .car-shape.e-vitara span,
+        .car-shape.e-vitara i { display: none; }
+        .car-shape.e-vitara { outline: 0; }
+        .car-shape.e-vitara:before { box-shadow: inset -18px 0 0 rgba(0,0,0,0.08), -30px 37px 0 -11px #ffb3bb, 58px 37px 0 -11px #ffb3bb; }
+
+        .car-shape.vitara {
+          width: 162px;
+          height: 92px;
+          border-radius: 18px 34px 17px 17px;
+          clip-path: polygon(6% 24%, 25% 8%, 67% 8%, 94% 34%, 98% 78%, 3% 78%, 0 46%);
+        }
+        .car-shape.vitara::before {
+          left: 44px;
+          top: 17px;
+          width: 72px;
+          height: 25px;
+          border-radius: 10px 18px 6px 6px;
+        }
+        .car-shape.vitara::after { left: 25px; bottom: -1px; box-shadow: 96px 0 0 #202020; }
+
+        .car-shape.s-cross {
+          width: 176px;
+          height: 82px;
+          border-radius: 24px 46px 18px 18px;
+          clip-path: polygon(3% 34%, 26% 13%, 73% 12%, 98% 42%, 97% 80%, 4% 80%);
+        }
+        .car-shape.s-cross::before {
+          left: 52px;
+          top: 16px;
+          width: 74px;
+          height: 23px;
+          border-radius: 10px 18px 5px 5px;
+        }
+        .car-shape.s-cross::after { left: 29px; bottom: -2px; box-shadow: 104px 0 0 #202020; }
+
+        .car-shape.jimny {
+          width: 138px;
+          height: 94px;
+          border-radius: 8px 8px 16px 16px;
+          background: linear-gradient(180deg, #f20a1e 0%, ${R} 58%, #a9000d 100%);
+        }
+        .car-shape.jimny::before {
+          left: 24px;
+          top: 14px;
+          width: 88px;
+          height: 29px;
+          border-radius: 5px;
+          box-shadow: inset -42px 0 0 rgba(0,0,0,0.08);
+        }
+        .car-shape.jimny::after { left: 18px; bottom: -10px; box-shadow: 80px 0 0 #202020; }
+
+        .car-shape.carry {
+          width: 174px;
+          height: 84px;
+          border-radius: 10px 12px 16px 16px;
+          background: linear-gradient(180deg, #cf4436 0%, #c0392b 70%, #8f241b 100%);
+          clip-path: polygon(3% 30%, 36% 30%, 36% 10%, 93% 10%, 98% 78%, 4% 78%);
+        }
+        .car-shape.carry::before {
+          left: 18px;
+          top: 22px;
+          width: 42px;
+          height: 24px;
+          border-radius: 5px;
+          box-shadow: 64px 0 0 #f6f6f6;
+        }
+        .car-shape.carry::after { left: 24px; bottom: -2px; box-shadow: 120px 0 0 #202020; }
 
         
 
