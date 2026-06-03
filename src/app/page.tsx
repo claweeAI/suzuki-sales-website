@@ -337,30 +337,32 @@ export default function HomePage() {
         .car-shape.jimny::after { left: 18px; bottom: -10px; box-shadow: 80px 0 0 #202020; }
 
         .car-shape.carry {
-          width: 174px;
-          height: 84px;
+          width: 212px;
+          height: 100px;
           border-radius: 0;
           background:
-            linear-gradient(180deg, #fff 0%, #f1f1f1 100%) 38px 26px / 28px 19px no-repeat,
-            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 22px 18px / 68px 56px no-repeat,
-            linear-gradient(180deg, #cf4436 0%, #c0392b 72%, #8f241b 100%) 84px 53px / 86px 21px no-repeat;
-          box-shadow: 0 10px 18px rgba(192,57,43,0.12);
-          transform: translateY(6px);
+            linear-gradient(180deg, #f4f4f4 0%, #e9e9e9 100%) 45px 27px / 30px 20px no-repeat,
+            linear-gradient(180deg, #f20a1e 0%, ${R} 66%, #a9000d 100%) 24px 17px / 84px 66px no-repeat,
+            linear-gradient(180deg, #f20a1e 0%, ${R} 66%, #a9000d 100%) 104px 55px / 100px 28px no-repeat,
+            linear-gradient(90deg, #f20a1e 0%, ${R} 100%) 104px 42px / 100px 8px no-repeat,
+            linear-gradient(90deg, #a9000d 0%, #a9000d 100%) 112px 68px / 78px 5px no-repeat;
+          box-shadow: none;
+          transform: translateY(0);
         }
         .car-shape.carry::before {
-          left: 84px;
-          top: 39px;
-          width: 82px;
-          height: 31px;
-          border-top: 6px solid #d84a3e;
-          border-right: 6px solid #a72b22;
-          border-left: 6px solid #a72b22;
-          border-bottom: 10px solid #98241c;
-          border-radius: 2px 2px 7px 7px;
-          background: transparent;
-          box-shadow: none;
+          left: 104px;
+          top: 42px;
+          width: 100px;
+          height: 41px;
+          border: 0;
+          border-radius: 2px 2px 8px 8px;
+          background:
+            linear-gradient(90deg, #a9000d 0 6px, transparent 6px 44px, #a9000d 44px 50px, transparent 50px 86px, #a9000d 86px 100%) 0 0 / 100% 100% no-repeat;
+          box-shadow:
+            inset 0 -12px 0 rgba(0,0,0,0.14),
+            0 13px 18px -18px rgba(230,0,18,0.28);
         }
-        .car-shape.carry::after { left: 36px; bottom: -8px; box-shadow: 112px 0 0 #202020; }
+        .car-shape.carry::after { left: 43px; bottom: -1px; box-shadow: 140px 0 0 #202020; }
 
         
 
@@ -510,13 +512,13 @@ export default function HomePage() {
                   car.id === "s-cross" ? "s-cross" :
                   car.id === "carry" ? "carry" : "";
                 return (
-                  <div key={car.id}>
-                      <button onClick={() => openModal(car)} className="w-full min-h-[286px] p-[26px_20px] text-center bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,20,20,0.12)] cursor-pointer" aria-haspopup="dialog">
-                        <div className={`car-shape ${shapeClass}`} />
+                  <div key={car.id} className="flex">
+                      <button onClick={() => openModal(car)} className="flex flex-col flex-1 items-center p-[26px_20px] text-center bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,20,20,0.12)] cursor-pointer" aria-haspopup="dialog">
+                        <div className={`car-shape ${shapeClass} shrink-0`} />
                         <h3 className="mt-5 mb-1 text-[26px] font-bold text-[#202020]">{car.name}</h3>
                         <p className="m-0 mt-0 text-[13px] text-[#999] font-bold">{car.subtitle}</p>
                         <p className="m-0 mt-1 text-[#666]">{car.description}</p>
-                        <p className="m-0 mt-3 text-[18px] font-extrabold text-[#e60012]">{car.price}</p>
+                        <p className="m-0 mt-auto pt-3 text-[18px] font-extrabold text-[#e60012]">{car.price}</p>
                       </button>
                   </div>
                 );
