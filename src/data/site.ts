@@ -219,12 +219,12 @@ export const cars: Car[] = [
 ];
 
 export const services = [
-  { title: "新車介紹", desc: "掌握 Suzuki 全車系最新資訊與價格" },
-  { title: "車款比較", desc: "依你的需求幫你分析最適合的車款" },
-  { title: "預約試乘", desc: "安排你想試的車款，到店直接上路" },
-  { title: "購車諮詢", desc: "從選車到成交，陪你走完整個流程" },
-  { title: "貸款／保險試算", desc: "試算月付金額，找到最輕鬆的方案" },
-  { title: "交車服務", desc: "完整交車說明，讓你安心上路" },
+  { title: "新車介紹", desc: "掌握 Suzuki 全車系最新資訊與價格", icon: "📖" },
+  { title: "車款比較", desc: "依你的需求幫你分析最適合的車款", icon: "⚖️" },
+  { title: "預約試乘", desc: "安排你想試的車款，到店直接上路", icon: "🚗" },
+  { title: "購車諮詢", desc: "從選車到成交，陪你走完整個流程", icon: "💬" },
+  { title: "貸款／保險試算", desc: "試算月付金額，找到最輕鬆的方案", icon: "💰" },
+  { title: "交車服務", desc: "完整交車說明，讓你安心上路", icon: "🔑" },
 ] as const;
 
 export const usageOptions = [

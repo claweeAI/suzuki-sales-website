@@ -558,9 +558,11 @@ export default function HomePage() {
 
             <div className="grid grid-cols-6 gap-3 max-lg:grid-cols-3 max-sm:grid-cols-1 max-sm:gap-[14px]">
               {services.map((s) => (
-                <span key={s.title} className="grid place-items-center min-h-[72px] p-3 bg-white border border-[#e7e7e7] rounded-[14px] text-[#333] font-extrabold text-center">
-                  {s.title}
-                </span>
+                <div key={s.title} className="flex flex-col gap-1.5 min-h-[112px] p-4 bg-white border border-[#e7e7e7] rounded-[14px] shadow-[0_2px_8px_rgba(20,20,20,0.04)]">
+                  <span className="text-[26px] leading-none">{s.icon}</span>
+                  <span className="text-[#333] text-[15px] font-extrabold leading-tight">{s.title}</span>
+                  <span className="text-[#888] text-[13px] leading-snug">{s.desc}</span>
+                </div>
               ))}
             </div>
           </section>
