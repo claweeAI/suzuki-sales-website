@@ -11,7 +11,7 @@ export function GET() {
     files = readdirSync(dir)
       .filter((f) => f.startsWith("delivery-") && f.endsWith(".jpg"))
       .map((f) => f.replace("delivery-", "").replace(".jpg", ""))
-      .sort((a, b) => Number(a) - Number(b));
+      .sort((a, b) => Number(b) - Number(a));
   } catch {
     // directory doesn't exist yet
   }
