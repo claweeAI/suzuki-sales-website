@@ -333,7 +333,6 @@ export default function HomePage() {
           border-radius: 10px 18px 5px 5px;
           box-shadow:
             inset -18px 0 0 rgba(0,0,0,0.08),
-            8px -8px 0 -6px #d8dde2,
             22px 45px 0 -10px #c8cdd2;
         }
         .car-shape.s-cross::after { left: 29px; bottom: -10px; box-shadow: 104px 0 0 #202020; }
