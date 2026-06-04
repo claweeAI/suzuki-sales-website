@@ -318,9 +318,7 @@ export default function HomePage() {
           border-radius: 10px 18px 6px 6px;
           box-shadow:
             inset -18px 0 0 rgba(0,0,0,0.08),
-            -23px 49px 0 -10px #3f3f3f,
-            73px 49px 0 -10px #3f3f3f,
-            26px 50px 0 -12px #565656;
+            30px 50px 0 -11px #565656;
         }
         .car-shape.vitara::after { left: 25px; bottom: -10px; box-shadow: 96px 0 0 #202020; }
 
