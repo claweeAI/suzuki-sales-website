@@ -296,7 +296,13 @@ export default function HomePage() {
         .car-shape.e-vitara span,
         .car-shape.e-vitara i { display: none; }
         .car-shape.e-vitara { outline: 0; }
-        .car-shape.e-vitara:before { box-shadow: inset -18px 0 0 rgba(0,0,0,0.08), -30px 37px 0 -11px #ffb3bb, 58px 37px 0 -11px #ffb3bb; }
+        .car-shape.e-vitara:before {
+          box-shadow:
+            inset -18px 0 0 rgba(0,0,0,0.08),
+            -30px 37px 0 -11px #5fd7ff,
+            58px 37px 0 -11px #5fd7ff,
+            2px 42px 0 -11px #9eeaff;
+        }
 
         .car-shape.vitara {
           width: 162px;
@@ -325,6 +331,10 @@ export default function HomePage() {
           width: 74px;
           height: 23px;
           border-radius: 10px 18px 5px 5px;
+          box-shadow:
+            inset -18px 0 0 rgba(0,0,0,0.08),
+            8px -8px 0 -6px #d8dde2,
+            22px 45px 0 -10px #c8cdd2;
         }
         .car-shape.s-cross::after { left: 29px; bottom: -10px; box-shadow: 104px 0 0 #202020; }
 
@@ -451,10 +461,13 @@ export default function HomePage() {
                     className="grid place-items-center w-9 h-9 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-full text-white text-[17px] font-bold no-underline transition-all"
                     aria-label="Facebook 粉絲專頁"
                   >f</a>
-                  <span
-                    className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[17px] font-bold"
-                    aria-label="Threads（即將開通）"
-                  >@</span>
+                  <a
+                    href="https://www.threads.net/@lian____06"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="grid place-items-center w-9 h-9 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-full text-white text-[17px] font-bold no-underline transition-all"
+                    aria-label="Threads"
+                  >@</a>
                   <span
                     className="grid place-items-center w-9 h-9 bg-white/8 rounded-full text-white/40 text-[14px] font-bold"
                     aria-label="Instagram（即將開通）"
