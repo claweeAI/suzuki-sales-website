@@ -316,6 +316,11 @@ export default function HomePage() {
           width: 72px;
           height: 25px;
           border-radius: 10px 18px 6px 6px;
+          box-shadow:
+            inset -18px 0 0 rgba(0,0,0,0.08),
+            -23px 49px 0 -10px #3f3f3f,
+            73px 49px 0 -10px #3f3f3f,
+            26px 50px 0 -12px #565656;
         }
         .car-shape.vitara::after { left: 25px; bottom: -10px; box-shadow: 96px 0 0 #202020; }
 
@@ -558,7 +563,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-6 gap-3 max-lg:grid-cols-3 max-sm:grid-cols-1 max-sm:gap-[14px]">
               {services.map((s) => (
-                <div key={s.title} className="flex flex-col gap-1.5 min-h-[112px] p-4 bg-white border border-[#e7e7e7] rounded-[14px] shadow-[0_2px_8px_rgba(20,20,20,0.04)]">
+                <div key={s.title} className="flex flex-col gap-1.5 min-h-[112px] p-4 bg-white border border-[#e7e7e7] rounded-[14px] shadow-[0_2px_8px_rgba(20,20,20,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(20,20,20,0.10)] hover:border-l-[#e60012] hover:border-l-3">
                   <span className="text-[26px] leading-none">{s.icon}</span>
                   <span className="text-[#333] text-[15px] font-extrabold leading-tight">{s.title}</span>
                   <span className="text-[#888] text-[13px] leading-snug">{s.desc}</span>
