@@ -16,9 +16,15 @@ export default function LoanCalculator() {
   const [downPayment, setDownPayment] = useState(160000);
   const [months, setMonths] = useState(60);
   const [rate, setRate] = useState(2.5);
+  const [loanRatio, setLoanRatio] = useState(80); // 貸款成數 %
 
   const principal = parseInt(price) || 0;
-  const loanAmount = Math.max(0, principal - downPayment);
+  // 兩種計算模式：有設定成數時優先，否則用頭期款
+  const effectiveLoanAmount = loanRatio > 0
+    ? Math.round(principal * loanRatio / 100)
+    : Math.max(0, principal - downPayment);
+  const loanAmount = effectiveLoanAmount;
+  const effectiveDownPayment = loanRatio > 0 ? principal - effectiveLoanAmount : downPayment;
 
   const monthlyPayment = useMemo(() => {
     if (loanAmount <= 0 || months <= 0) return 0;
@@ -84,29 +90,32 @@ export default function LoanCalculator() {
               />
             </div>
 
-            {/* Down Payment Slider */}
+            {/* 貸款成數 Slider */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-[14px] font-extrabold text-[#555]">頭期款</label>
+                <label className="text-[14px] font-extrabold text-[#555]">貸款成數</label>
                 <span className="text-[14px] font-extrabold text-[#e60012]">
-                  {downPayment.toLocaleString()} 元
+                  {loanRatio}%（頭期 {100 - loanRatio}%）
                 </span>
               </div>
               <input
                 type="range"
-                min={0}
-                max={principal}
-                step={5000}
-                value={downPayment}
-                onChange={(e) => setDownPayment(Number(e.target.value))}
+                min={50}
+                max={90}
+                step={5}
+                value={loanRatio}
+                onChange={(e) => {
+                  setLoanRatio(Number(e.target.value));
+                  setDownPayment(Math.round(principal * (100 - Number(e.target.value)) / 100));
+                }}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #e60012 ${(downPayment / Math.max(principal, 1)) * 100}%, #e0e0e0 ${(downPayment / Math.max(principal, 1)) * 100}%)`,
+                  background: `linear-gradient(to right, #e60012 ${((loanRatio - 50) / 40) * 100}%, #e0e0e0 ${((loanRatio - 50) / 40) * 100}%)`,
                 }}
               />
               <div className="flex justify-between text-[12px] text-[#999] mt-1">
-                <span>0 元</span>
-                <span>{principal.toLocaleString()} 元</span>
+                <span>50%</span>
+                <span>90%</span>
               </div>
             </div>
 
@@ -168,6 +177,14 @@ export default function LoanCalculator() {
 
           <div className="w-full mt-5 pt-4 border-t border-[#eee] space-y-2 text-left">
             <div className="flex justify-between text-[14px]">
+              <span className="text-[#888]">貸款成數</span>
+              <span className="font-extrabold text-[#555]">{loanRatio}%</span>
+            </div>
+            <div className="flex justify-between text-[14px]">
+              <span className="text-[#888]">頭期款</span>
+              <span className="font-extrabold text-[#555]">{effectiveDownPayment.toLocaleString()} 元</span>
+            </div>
+            <div className="flex justify-between text-[14px]">
               <span className="text-[#888]">貸款總額</span>
               <span className="font-extrabold text-[#555]">{loanAmount.toLocaleString()} 元</span>
             </div>
@@ -179,14 +196,11 @@ export default function LoanCalculator() {
               <span className="text-[#888]">年利率</span>
               <span className="font-extrabold text-[#555]">{rate}%</span>
             </div>
-            <div className="flex justify-between text-[14px]">
-              <span className="text-[#888]">頭期款</span>
-              <span className="font-extrabold text-[#555]">{downPayment.toLocaleString()} 元</span>
-            </div>
+
             <div className="flex justify-between text-[14px]">
               <span className="text-[#888]">總繳金額</span>
               <span className="font-extrabold text-[#555]">
-                {monthlyPayment > 0 ? Math.round(monthlyPayment * months + downPayment).toLocaleString() : "—"} 元
+                {monthlyPayment > 0 ? Math.round(monthlyPayment * months + effectiveDownPayment).toLocaleString() : "—"} 元
               </span>
             </div>
           </div>
