@@ -140,18 +140,18 @@ export default function LoanCalculator() {
               </div>
               <input
                 type="range"
-                min={2.5}
+                min={1.5}
                 max={8}
                 step={0.1}
                 value={rate}
                 onChange={(e) => setRate(Number(e.target.value))}
                 className="w-full h-2 rounded-full appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #e60012 ${((rate - 2.5) / (8 - 2.5)) * 100}%, #e0e0e0 ${((rate - 2.5) / (8 - 2.5)) * 100}%)`,
+                  background: `linear-gradient(to right, #e60012 ${((rate - 1.5) / (8 - 1.5)) * 100}%, #e0e0e0 ${((rate - 1.5) / (8 - 1.5)) * 100}%)`,
                 }}
               />
               <div className="flex justify-between text-[12px] text-[#999] mt-1">
-                <span>2.5%</span>
+                <span>1.5%</span>
                 <span>8%</span>
               </div>
             </div>
