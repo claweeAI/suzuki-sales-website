@@ -566,6 +566,20 @@ function HomePageInner() {
             </div>
           </section>
 
+          {/* ═══════ 車款比較說明 ═══════ */}
+          <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-[34px] border-t border-[#ddd] max-sm:w-[calc(100%-28px)] max-sm:mt-5">
+            <div className="flex items-end justify-between gap-5 mb-5 max-sm:flex-col max-sm:items-start">
+              <div>
+                <p className="m-0 text-[#666] text-[15px] font-bold">車款比較</p>
+                <h2 className="mt-0.5 mb-0 text-[28px] leading-tight max-sm:text-[23px]">選出最多 3 台車，快速比對差異</h2>
+              </div>
+            </div>
+            <div className="p-5 bg-[#fff8f8] border border-[#ffd5d5] rounded-[14px] text-[14px] text-[#555]">
+              <span className="font-extrabold text-[#e60012]">💡 點擊每台車下方的「加入比較」按鈕</span>
+              ，選好後底部會出現比較欄，按「比較」就能看到規格對照表。
+            </div>
+          </section>
+
           {/* ═══════ 服務項目 ═══════ */}
           <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-5 max-sm:w-[calc(100%-28px)] max-sm:mt-5">
             <div className="flex items-end justify-between gap-5 mb-5 max-sm:flex-col max-sm:items-start">
