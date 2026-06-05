@@ -28,14 +28,6 @@ function HomePageInner() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-
-    // 通知 Discord（不等待完成，不影響送出速度）
-    const notifyPromise = fetch("/api/notify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    }).catch(() => {});
-
     try {
       await fetch(
         "https://script.google.com/macros/s/AKfycbwHLQ1emh1ByNmQGwQqeOliUZ45KZCuGy9rxn6x92ytCMmwGdE3e4jQKyWrvyNqzAY/exec",
@@ -49,7 +41,6 @@ function HomePageInner() {
     } catch {
       /* 靜默失敗 — 不影響使用者體驗 */
     }
-
     setSending(false);
     setSubmitted(true);
   };
