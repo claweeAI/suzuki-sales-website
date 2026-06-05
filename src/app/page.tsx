@@ -2,9 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
-import CompareProvider, { useCompare } from "@/components/CarCompareProvider";
-import CompareBar from "@/components/CompareBar";
-import LoanCalculator from "@/components/LoanCalculator";
 
 function DeliveryCarousel() {
   const [images, setImages] = useState<string[]>([]);
@@ -206,8 +203,7 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
   );
 }
 
-function HomePageInner() {
-  const { toggleCar, isSelected } = useCompare();
+export default function HomePage() {
   const [form, setForm] = useState({ name: "", contact: "", car: "", usage: "", budget: "" });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
@@ -539,9 +535,8 @@ function HomePageInner() {
                   car.id === "e-vitara" ? "e-vitara" :
                   car.id === "s-cross" ? "s-cross" :
                   car.id === "carry" ? "carry" : "";
-                const selected = isSelected(car.id);
                 return (
-                  <div key={car.id} className="flex flex-col gap-2">
+                  <div key={car.id} className="flex">
                       <button onClick={() => openModal(car)} className="flex flex-col flex-1 items-center p-[26px_20px] text-center bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,20,20,0.12)] cursor-pointer" aria-haspopup="dialog">
                         <div className={`car-shape ${shapeClass} shrink-0`} />
                         <h3 className="mt-5 mb-1 text-[26px] font-bold text-[#202020]">{car.name}</h3>
@@ -549,34 +544,9 @@ function HomePageInner() {
                         <p className="m-0 mt-1 text-[#666]">{car.description}</p>
                         <p className="m-0 mt-auto pt-3 text-[18px] font-extrabold text-[#e60012]">{car.price}</p>
                       </button>
-                      {/* 加入比較按鈕 */}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleCar(car); }}
-                        className={`w-full h-[38px] rounded-[10px] font-extrabold text-[13px] cursor-pointer border-2 transition-all ${
-                          selected
-                            ? "bg-[#e60012] text-white border-[#e60012]"
-                            : "bg-white text-[#e60012] border-[#e60012]/40 hover:bg-[#fff5f5] hover:border-[#e60012]"
-                        }`}
-                      >
-                        {selected ? "✓ 已選取比較" : "+ 加入比較"}
-                      </button>
                   </div>
                 );
               })}
-            </div>
-          </section>
-
-          {/* ═══════ 車款比較說明 ═══════ */}
-          <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-[34px] border-t border-[#ddd] max-sm:w-[calc(100%-28px)] max-sm:mt-5">
-            <div className="flex items-end justify-between gap-5 mb-5 max-sm:flex-col max-sm:items-start">
-              <div>
-                <p className="m-0 text-[#666] text-[15px] font-bold">車款比較</p>
-                <h2 className="mt-0.5 mb-0 text-[28px] leading-tight max-sm:text-[23px]">選出最多 3 台車，快速比對差異</h2>
-              </div>
-            </div>
-            <div className="p-5 bg-[#fff8f8] border border-[#ffd5d5] rounded-[14px] text-[14px] text-[#555]">
-              <span className="font-extrabold text-[#e60012]">💡 點擊每台車下方的「加入比較」按鈕</span>
-              ，選好後底部會出現比較欄，按「比較」就能看到規格對照表。
             </div>
           </section>
 
@@ -705,9 +675,6 @@ function HomePageInner() {
             )}
           </section>
 
-          {/* ═══════ 貸款試算 ═══════ */}
-          <LoanCalculator />
-
           <footer className="py-[26px] px-6 text-[#9b9b9b] text-center text-sm">
             © 2026 Suzuki 汽車顧問 {dealer.name}｜凱騰鈴木北投所
           </footer>
@@ -743,16 +710,6 @@ function HomePageInner() {
           setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 100);
         }} lineHref={lineHref} />
       )}
-
-      <CompareBar />
     </>
-  );
-}
-
-export default function HomePage() {
-  return (
-    <CompareProvider>
-      <HomePageInner />
-    </CompareProvider>
   );
 }
