@@ -2,8 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { dealer, cars, services, usageOptions, budgetRanges, type Car } from "@/data/site";
-import CompareProvider, { useCompare } from "@/components/CarCompareProvider";
-import CompareBar from "@/components/CompareBar";
 import LoanCalculator from "@/components/LoanCalculator";
 
 function DeliveryCarousel() {
@@ -207,11 +205,11 @@ function CarModal({ car, onClose, onInterest, lineHref }: { car: Car; onClose: (
 }
 
 function HomePageInner() {
-  const { toggleCar, isSelected } = useCompare();
   const [form, setForm] = useState({ name: "", contact: "", car: "", usage: "", budget: "" });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [modalCar, setModalCar] = useState<Car | null>(null);
+  const [loanCarId, setLoanCarId] = useState("");
 
   const update = (f: string, v: string) => setForm(p => ({ ...p, [f]: v }));
   const handleSubmit = async (e: React.FormEvent) => {
@@ -539,26 +537,14 @@ function HomePageInner() {
                   car.id === "e-vitara" ? "e-vitara" :
                   car.id === "s-cross" ? "s-cross" :
                   car.id === "carry" ? "carry" : "";
-                const selected = isSelected(car.id);
                 return (
-                  <div key={car.id} className="flex flex-col gap-2">
+                  <div key={car.id} className="flex flex-col">
                       <button onClick={() => openModal(car)} className="flex flex-col flex-1 items-center p-[26px_20px] text-center bg-white border border-[#e7e7e7] rounded-[18px] shadow-[0_12px_30px_rgba(20,20,20,0.08)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(20,20,20,0.12)] cursor-pointer" aria-haspopup="dialog">
                         <div className={`car-shape ${shapeClass} shrink-0`} />
                         <h3 className="mt-5 mb-1 text-[26px] font-bold text-[#202020]">{car.name}</h3>
                         <p className="m-0 mt-0 text-[13px] text-[#999] font-bold">{car.subtitle}</p>
                         <p className="m-0 mt-1 text-[#666]">{car.description}</p>
                         <p className="m-0 mt-auto pt-3 text-[18px] font-extrabold text-[#e60012]">{car.price}</p>
-                      </button>
-                      {/* 加入比較按鈕 */}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); toggleCar(car); }}
-                        className={`w-full h-[38px] rounded-[10px] font-extrabold text-[13px] cursor-pointer border-2 transition-all ${
-                          selected
-                            ? "bg-[#e60012] text-white border-[#e60012]"
-                            : "bg-white text-[#e60012] border-[#e60012]/40 hover:bg-[#fff5f5] hover:border-[#e60012]"
-                        }`}
-                      >
-                        {selected ? "✓ 已選取比較" : "+ 加入比較"}
                       </button>
                   </div>
                 );
@@ -708,7 +694,7 @@ function HomePageInner() {
 
           {/* ═══════ 貸款試算 ═══════ */}
           <section id="loan-calculator">
-            <LoanCalculator />
+            <LoanCalculator preselectedCarId={loanCarId} />
           </section>
 
           <footer className="py-[26px] px-6 text-[#9b9b9b] text-center text-sm">
@@ -742,20 +728,15 @@ function HomePageInner() {
       {modalCar && (
         <CarModal car={modalCar} onClose={closeModal} onInterest={() => {
           update("car", modalCar.name);
+          setLoanCarId(modalCar.id);
           closeModal();
-          setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 100);
+          setTimeout(() => document.getElementById("loan-calculator")?.scrollIntoView({ behavior: "smooth" }), 100);
         }} lineHref={lineHref} />
       )}
-
-      <CompareBar />
     </>
   );
 }
 
 export default function HomePage() {
-  return (
-    <CompareProvider>
-      <HomePageInner />
-    </CompareProvider>
-  );
+  return <HomePageInner />;
 }

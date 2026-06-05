@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { cars } from "@/data/site";
 
 function parsePrice(priceStr: string): number {
@@ -10,8 +10,8 @@ function parsePrice(priceStr: string): number {
   return n;
 }
 
-export default function LoanCalculator() {
-  const [selectedCarId, setSelectedCarId] = useState("");
+export default function LoanCalculator({ preselectedCarId }: { preselectedCarId?: string }) {
+  const [selectedCarId, setSelectedCarId] = useState(preselectedCarId || "");
   const [price, setPrice] = useState("800000");
   const [downPayment, setDownPayment] = useState(160000);
   const [months, setMonths] = useState(60);
@@ -33,16 +33,25 @@ export default function LoanCalculator() {
     return loanAmount * (r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
   }, [loanAmount, months, rate]);
 
-  const handleCarSelect = (carId: string) => {
+  const doCarSelect = (carId: string) => {
     setSelectedCarId(carId);
     if (!carId) return;
     const car = cars.find((c) => c.id === carId);
     if (car) {
       const p = parsePrice(car.price);
       setPrice(String(p));
-      setDownPayment(Math.round(p * 0.2));
+      setDownPayment(Math.round(p * (100 - loanRatio) / 100));
     }
   };
+
+  const handleCarSelect = (carId: string) => doCarSelect(carId);
+
+  // 當外部傳入 preselectedCarId 時自動填入
+  useEffect(() => {
+    if (preselectedCarId && preselectedCarId !== selectedCarId) {
+      doCarSelect(preselectedCarId);
+    }
+  }, [preselectedCarId]);
 
   return (
     <section className="w-[calc(100%-88px)] mx-auto mt-[34px] pt-[34px] border-t border-[#ddd] max-sm:w-[calc(100%-28px)] max-sm:mt-5">
