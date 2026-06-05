@@ -29,17 +29,24 @@ function HomePageInner() {
     e.preventDefault();
     setSending(true);
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwHLQ1emh1ByNmQGwQqeOliUZ45KZCuGy9rxn6x92ytCMmwGdE3e4jQKyWrvyNqzAY/exec",
-        {
+      await Promise.all([
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwHLQ1emh1ByNmQGwQqeOliUZ45KZCuGy9rxn6x92ytCMmwGdE3e4jQKyWrvyNqzAY/exec",
+          {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ ...form, timestamp: new Date().toISOString() }),
+          }
+        ),
+        fetch("/api/notify", {
           method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({ ...form, timestamp: new Date().toISOString() }),
-        }
-      );
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }),
+      ]);
     } catch {
-      /* 靜默失敗 — 不影響使用者體驗 */
+      /* 靜默失敗 */
     }
     setSending(false);
     setSubmitted(true);
