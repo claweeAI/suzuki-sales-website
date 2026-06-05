@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const embed = {
       title: "📩 新購車諮詢",
       color: 0xe60012,
-
+      thumbnail: { url: "https://suzuki-sales-website.vercel.app/suzuki-logo.svg" },
       fields: [
         { name: "姓名", value: body.name || "（未填）", inline: true },
         { name: "聯絡方式", value: body.contact || "（未填）", inline: true },
@@ -33,11 +33,7 @@ export async function POST(req: NextRequest) {
     const res = await fetch(DISCORD_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: "Suzuki 官網諮詢",
-        avatar_url: "https://suzuki-sales-website.vercel.app/suzuki-logo.svg",
-        embeds: [embed],
-      }),
+      body: JSON.stringify({ embeds: [embed] }),
     });
 
     if (!res.ok) {
