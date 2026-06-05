@@ -172,8 +172,8 @@ export default function CompareBar() {
         </button>
       </div>
 
-      {/* Padding so content isn't hidden behind the bar — only on mobile (CTA bar is also fixed) */}
-      <div className="h-[60px] md:hidden" />
+      {/* Padding so content isn't hidden behind the bar */}
+      <div className="h-[60px]" />
 
       {showModal && <CompareModal cars={selected} onClose={() => setShowModal(false)} />}
     </>
