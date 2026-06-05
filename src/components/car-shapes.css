@@ -1,0 +1,179 @@
+/* ═══════ Suzuki 車款 CSS 車形 (純裝飾形狀，使用 ::before / ::after) ═══════ */
+
+:root {
+  --brand-red: #e60012;
+}
+
+.car-shape {
+  position: relative;
+  width: 156px;
+  height: 86px;
+  margin: 12px auto 0;
+  background: linear-gradient(180deg, #f20a1e 0%, var(--brand-red) 64%, #b9000e 100%);
+  border-radius: 30px 38px 18px 18px;
+  box-shadow: inset 0 -12px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(230,0,18,0.12);
+}
+.car-shape::before {
+  content: "";
+  position: absolute;
+  left: 38px;
+  top: 14px;
+  width: 74px;
+  height: 28px;
+  background: linear-gradient(180deg, #fff 0%, #f1f1f1 100%);
+  border-radius: 18px 18px 7px 7px;
+  box-shadow: inset -18px 0 0 rgba(0,0,0,0.08);
+}
+.car-shape::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  bottom: -11px;
+  width: 23px;
+  height: 23px;
+  border-radius: 999px;
+  background: #202020;
+  box-shadow: 88px 0 0 #202020;
+}
+
+/* ── SWIFT ── */
+.car-shape.swift {
+  width: 142px;
+  height: 76px;
+  border-radius: 44px 50px 22px 24px;
+  transform: translateY(6px);
+}
+.car-shape.swift::before {
+  left: 38px;
+  top: 13px;
+  width: 58px;
+  height: 24px;
+  border-radius: 18px 18px 8px 8px;
+}
+.car-shape.swift::after { left: 22px; box-shadow: 78px 0 0 #202020; }
+
+/* ── e VITARA ── */
+.car-shape.e-vitara {
+  width: 166px;
+  height: 84px;
+  border-radius: 26px 44px 18px 18px;
+}
+.car-shape.e-vitara::before {
+  left: 48px;
+  top: 13px;
+  width: 66px;
+  height: 25px;
+  border-radius: 16px 20px 6px 6px;
+  box-shadow:
+    inset -18px 0 0 rgba(0,0,0,0.08),
+    -30px 37px 0 -11px #5fd7ff,
+    58px 37px 0 -11px #5fd7ff,
+    2px 42px 0 -11px #9eeaff;
+}
+.car-shape.e-vitara::after { left: 25px; box-shadow: 98px 0 0 #202020; }
+.car-shape.e-vitara span,
+.car-shape.e-vitara i { display: none; }
+.car-shape.e-vitara { outline: 0; }
+
+/* ── VITARA ── */
+.car-shape.vitara {
+  width: 162px;
+  height: 92px;
+  border-radius: 18px 34px 17px 17px;
+  transform: skewX(-5deg) translateY(2px);
+}
+.car-shape.vitara::before {
+  left: 44px;
+  top: 17px;
+  width: 72px;
+  height: 25px;
+  border-radius: 10px 18px 6px 6px;
+  box-shadow:
+    inset -18px 0 0 rgba(0,0,0,0.08),
+    30px 50px 0 -11px #565656;
+}
+.car-shape.vitara::after { left: 25px; bottom: -10px; box-shadow: 96px 0 0 #202020; }
+
+/* ── S-CROSS ── */
+.car-shape.s-cross {
+  width: 176px;
+  height: 82px;
+  border-radius: 24px 46px 18px 18px;
+  transform: skewX(-4deg) translateY(6px);
+}
+.car-shape.s-cross::before {
+  left: 52px;
+  top: 16px;
+  width: 74px;
+  height: 23px;
+  border-radius: 10px 18px 5px 5px;
+  box-shadow:
+    inset -18px 0 0 rgba(0,0,0,0.08),
+    22px 45px 0 -10px #c8cdd2;
+}
+.car-shape.s-cross::after { left: 29px; bottom: -10px; box-shadow: 104px 0 0 #202020; }
+
+/* ── Jimny ── */
+.car-shape.jimny {
+  width: 138px;
+  height: 94px;
+  border-radius: 8px 8px 16px 16px;
+  background: linear-gradient(180deg, #5f7042 0%, #475735 58%, #2f3b27 100%);
+  box-shadow: inset 0 -12px 0 rgba(0,0,0,0.18), 0 10px 18px rgba(71,87,53,0.16);
+}
+.car-shape.jimny::before {
+  left: 24px;
+  top: 14px;
+  width: 88px;
+  height: 29px;
+  border-radius: 5px;
+  box-shadow: inset -42px 0 0 rgba(0,0,0,0.08);
+}
+.car-shape.jimny::after { left: 18px; bottom: -10px; box-shadow: 80px 0 0 #202020; }
+
+/* ── CARRY ── */
+.car-shape.carry {
+  width: 212px;
+  height: 100px;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, #f4f4f4 0%, #e9e9e9 100%) 45px 27px / 30px 20px no-repeat,
+    linear-gradient(180deg, #f20a1e 0%, var(--brand-red) 66%, #a9000d 100%) 24px 17px / 84px 66px no-repeat,
+    linear-gradient(180deg, #f20a1e 0%, var(--brand-red) 66%, #a9000d 100%) 104px 55px / 100px 28px no-repeat,
+    linear-gradient(90deg, #f20a1e 0%, var(--brand-red) 100%) 104px 42px / 100px 8px no-repeat,
+    linear-gradient(90deg, #a9000d 0%, #a9000d 100%) 112px 68px / 78px 5px no-repeat;
+  box-shadow: none;
+  transform: translateY(0);
+}
+.car-shape.carry::before {
+  left: 104px;
+  top: 42px;
+  width: 100px;
+  height: 41px;
+  border: 0;
+  border-radius: 2px 2px 8px 8px;
+  background:
+    linear-gradient(90deg, #a9000d 0 6px, transparent 6px 44px, #a9000d 44px 50px, transparent 50px 86px, #a9000d 86px 100%) 0 0 / 100% 100% no-repeat;
+  box-shadow:
+    inset 0 -12px 0 rgba(0,0,0,0.14),
+    0 13px 18px -18px rgba(230,0,18,0.28);
+}
+.car-shape.carry::after { left: 43px; bottom: -1px; box-shadow: 140px 0 0 #202020; }
+
+/* ── Modal overlay animation ── */
+.modal-overlay {
+  animation: fadeIn 0.2s ease;
+}
+.modal-content {
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

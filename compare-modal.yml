@@ -1,0 +1,332 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - img "張鈺漣" [ref=e8]
+        - generic [ref=e9]:
+          - generic [ref=e11]:
+            - img "Suzuki" [ref=e12]
+            - paragraph [ref=e13]: 用心服務・安心購車
+          - generic [ref=e14]:
+            - paragraph [ref=e15]: Suzuki 汽車顧問
+            - heading "張鈺漣" [level=1] [ref=e16]
+            - paragraph [ref=e17]: 新車諮詢 / 試乘預約
+          - generic [ref=e18]:
+            - link "Facebook 粉絲專頁" [ref=e19] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=100092443294776&locale=zh_TW
+              - text: f
+            - link "Threads" [ref=e20] [cursor=pointer]:
+              - /url: https://www.threads.net/@lian____06
+              - text: "@"
+            - generic "Instagram（即將開通）" [ref=e21]: IG
+      - generic [ref=e22]:
+        - article [ref=e23]:
+          - generic [ref=e24]: ☎
+          - generic [ref=e25]:
+            - paragraph [ref=e26]: 電話諮詢
+            - heading "0987-629-773" [level=2] [ref=e27]
+            - link "立即撥打" [ref=e28] [cursor=pointer]:
+              - /url: tel:0987629773
+        - article [ref=e29]:
+          - generic [ref=e30]: LINE
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: LINE 聯絡
+            - heading "@ke030" [level=2] [ref=e33]
+            - link "加入好友" [ref=e34] [cursor=pointer]:
+              - /url: https://line.me/R/ti/p/~ke030
+        - article [ref=e35]:
+          - generic [ref=e36]: 📍
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: 服務據點
+            - heading "凱騰鈴木 Suzuki 北投所" [level=2] [ref=e39]
+            - paragraph [ref=e40]: 台北市北投區承德路六段337號
+            - link "查看地圖" [ref=e41] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=%E5%87%B1%E9%A8%B0%E9%88%B4%E6%9C%A8%20Suzuki%20%E5%8C%97%E6%8A%95%E6%89%80
+      - generic [ref=e42]:
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: 熱門車款
+          - heading "依照需求，快速找到適合的 Suzuki" [level=2] [ref=e46]
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - button "e VITARA 純電休旅 純電世代，零油耗的智慧移動 115 萬起" [ref=e49] [cursor=pointer]:
+              - heading "e VITARA" [level=3] [ref=e51]
+              - paragraph [ref=e52]: 純電休旅
+              - paragraph [ref=e53]: 純電世代，零油耗的智慧移動
+              - paragraph [ref=e54]: 115 萬起
+            - button "✓ 已選取比較" [ref=e235] [cursor=pointer]
+          - generic [ref=e56]:
+            - button "SWIFT 靈活小車 城市經典新風範，日本進口輕油電 73 萬起" [ref=e57] [cursor=pointer]:
+              - heading "SWIFT" [level=3] [ref=e59]
+              - paragraph [ref=e60]: 靈活小車
+              - paragraph [ref=e61]: 城市經典新風範，日本進口輕油電
+              - paragraph [ref=e62]: 73 萬起
+            - button "✓ 已選取比較" [ref=e236] [cursor=pointer]
+          - generic [ref=e64]:
+            - button "Jimny 硬派越野 經典方正造型，越野玩家的夢想車 84.9 萬起" [ref=e65] [cursor=pointer]:
+              - heading "Jimny" [level=3] [ref=e67]
+              - paragraph [ref=e68]: 硬派越野
+              - paragraph [ref=e69]: 經典方正造型，越野玩家的夢想車
+              - paragraph [ref=e70]: 84.9 萬起
+            - button "✓ 已選取比較" [ref=e260] [cursor=pointer]
+          - generic [ref=e72]:
+            - button "VITARA 都會休旅 ALLGRIP 四驅加持，1.4L BOOSTJET 渦輪 104 萬起" [ref=e73] [cursor=pointer]:
+              - heading "VITARA" [level=3] [ref=e75]
+              - paragraph [ref=e76]: 都會休旅
+              - paragraph [ref=e77]: ALLGRIP 四驅加持，1.4L BOOSTJET 渦輪
+              - paragraph [ref=e78]: 104 萬起
+            - button "+ 加入比較" [ref=e79] [cursor=pointer]
+          - generic [ref=e80]:
+            - button "S-CROSS 跨界休旅 寬敞行李廂，48V 輕油電，Level 2 安全 98 萬起" [ref=e81] [cursor=pointer]:
+              - heading "S-CROSS" [level=3] [ref=e83]
+              - paragraph [ref=e84]: 跨界休旅
+              - paragraph [ref=e85]: 寬敞行李廂，48V 輕油電，Level 2 安全
+              - paragraph [ref=e86]: 98 萬起
+            - button "+ 加入比較" [ref=e87] [cursor=pointer]
+          - generic [ref=e88]:
+            - button "CARRY 商用貨車 頭家首選，同級最強載重 915kg 49.9 萬起" [ref=e89] [cursor=pointer]:
+              - heading "CARRY" [level=3] [ref=e91]
+              - paragraph [ref=e92]: 商用貨車
+              - paragraph [ref=e93]: 頭家首選，同級最強載重 915kg
+              - paragraph [ref=e94]: 49.9 萬起
+            - button "+ 加入比較" [ref=e95] [cursor=pointer]
+      - generic [ref=e96]:
+        - generic [ref=e98]:
+          - paragraph [ref=e99]: 服務項目
+          - heading "購車流程，一次協助" [level=2] [ref=e100]
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]: 📖
+            - generic [ref=e104]: 新車介紹
+            - generic [ref=e105]: 掌握 Suzuki 全車系最新資訊與價格
+          - generic [ref=e106]:
+            - generic [ref=e107]: ⚖️
+            - generic [ref=e108]: 車款比較
+            - generic [ref=e109]: 依你的需求幫你分析最適合的車款
+          - generic [ref=e110]:
+            - generic [ref=e111]: 🚗
+            - generic [ref=e112]: 預約試乘
+            - generic [ref=e113]: 安排你想試的車款，到店直接上路
+          - generic [ref=e114]:
+            - generic [ref=e115]: 💬
+            - generic [ref=e116]: 購車諮詢
+            - generic [ref=e117]: 從選車到成交，陪你走完整個流程
+          - link "💰 貸款／保險試算 試算月付金額，找到最輕鬆的方案" [ref=e118] [cursor=pointer]:
+            - /url: "#loan-calculator"
+            - generic [ref=e119]: 💰
+            - generic [ref=e120]: 貸款／保險試算
+            - generic [ref=e121]: 試算月付金額，找到最輕鬆的方案
+          - generic [ref=e122]:
+            - generic [ref=e123]: 🔑
+            - generic [ref=e124]: 交車服務
+            - generic [ref=e125]: 完整交車說明，讓你安心上路
+      - generic [ref=e126]:
+        - generic [ref=e128]:
+          - paragraph [ref=e129]: 真實交車紀錄
+          - heading "每一位車主的笑容，都是我最大的動力" [level=2] [ref=e130]
+        - generic [ref=e237]:
+          - generic [ref=e238]:
+            - img "交車照片 9" [ref=e240]
+            - img "交車照片 8" [ref=e242]
+            - img "交車照片 7" [ref=e244]
+          - generic [ref=e245]:
+            - button "上一頁": ‹
+            - generic [ref=e246]: 1 / 3
+            - button "下一頁" [ref=e247]: ›
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e133]: 💬
+          - generic [ref=e134]:
+            - paragraph [ref=e135]: 快速諮詢
+            - heading "留下需求，我將盡快與您聯繫" [level=2] [ref=e136]
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]: 姓名
+            - textbox "姓名" [ref=e141]:
+              - /placeholder: 請輸入您的姓名
+          - generic [ref=e142]:
+            - generic [ref=e143]: 聯絡方式
+            - textbox "聯絡方式" [ref=e144]:
+              - /placeholder: 請輸入手機號碼
+          - generic [ref=e145]:
+            - generic [ref=e146]: 想了解車款
+            - combobox "想了解車款" [ref=e147]:
+              - option "請選擇想了解的車款" [selected]
+              - option "e VITARA"
+              - option "SWIFT"
+              - option "Jimny"
+              - option "VITARA"
+              - option "S-CROSS"
+              - option "CARRY"
+              - option "還不確定"
+          - generic [ref=e148]:
+            - generic [ref=e149]: 購車用途
+            - combobox "購車用途" [ref=e150]:
+              - option "請選擇購車用途" [selected]
+              - option "市區通勤代步"
+              - option "家庭出遊"
+              - option "戶外露營／越野"
+              - option "商用載貨"
+              - option "第一台車"
+              - option "換車升級"
+              - option "其他"
+          - generic [ref=e151]:
+            - generic [ref=e152]: 預算區間
+            - combobox "預算區間" [ref=e153]:
+              - option "請選擇預算區間" [selected]
+              - option "50 萬以下"
+              - option "50-70 萬"
+              - option "70-90 萬"
+              - option "90-120 萬"
+              - option "120 萬以上"
+              - option "還不確定"
+          - button "送出需求" [ref=e154] [cursor=pointer]
+      - generic [ref=e156]:
+        - generic [ref=e158]:
+          - paragraph [ref=e159]: 貸款試算
+          - heading "試算月付金額，輕鬆購車" [level=2] [ref=e160]
+        - generic [ref=e161]:
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - generic [ref=e165]: 選擇車款（自動帶入價格）
+              - combobox [ref=e166]:
+                - option "手動輸入車價" [selected]
+                - option "e VITARA — 115 萬起"
+                - option "SWIFT — 73 萬起"
+                - option "Jimny — 84.9 萬起"
+                - option "VITARA — 104 萬起"
+                - option "S-CROSS — 98 萬起"
+                - option "CARRY — 49.9 萬起"
+            - generic [ref=e167]:
+              - generic [ref=e168]: 車價（元）
+              - spinbutton [ref=e169]: "800000"
+            - generic [ref=e170]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: 貸款成數
+                - generic [ref=e173]: 80%（頭期 20%）
+              - slider [ref=e174] [cursor=pointer]: "80"
+              - generic [ref=e175]:
+                - generic [ref=e176]: 50%
+                - generic [ref=e177]: 90%
+            - generic [ref=e178]:
+              - generic [ref=e179]: 期數
+              - generic [ref=e180]:
+                - button "12 期" [ref=e181] [cursor=pointer]
+                - button "24 期" [ref=e182] [cursor=pointer]
+                - button "36 期" [ref=e183] [cursor=pointer]
+                - button "48 期" [ref=e184] [cursor=pointer]
+                - button "60 期" [ref=e185] [cursor=pointer]
+                - button "72 期" [ref=e186] [cursor=pointer]
+            - generic [ref=e187]:
+              - generic [ref=e188]:
+                - generic [ref=e189]: 年利率
+                - generic [ref=e190]: 2.5%
+              - slider [ref=e191] [cursor=pointer]: "2.5"
+              - generic [ref=e192]:
+                - generic [ref=e193]: 2.5%
+                - generic [ref=e194]: 8%
+          - generic [ref=e195]:
+            - paragraph [ref=e196]: 每月應付金額
+            - paragraph [ref=e197]: 11,358
+            - paragraph [ref=e198]: 元 / 月
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - generic [ref=e201]: 貸款成數
+                - generic [ref=e202]: 80%
+              - generic [ref=e203]:
+                - generic [ref=e204]: 頭期款
+                - generic [ref=e205]: 160,000 元
+              - generic [ref=e206]:
+                - generic [ref=e207]: 貸款總額
+                - generic [ref=e208]: 640,000 元
+              - generic [ref=e209]:
+                - generic [ref=e210]: 期數
+                - generic [ref=e211]: 60 期（5 年）
+              - generic [ref=e212]:
+                - generic [ref=e213]: 年利率
+                - generic [ref=e214]: 2.5%
+              - generic [ref=e215]:
+                - generic [ref=e216]: 總繳金額
+                - generic [ref=e217]: 841,499 元
+            - paragraph [ref=e218]: "* 本試算結果僅供參考，實際貸款條件依金融機構核定為準"
+      - generic [ref=e219]: © 2026 Suzuki 汽車顧問 張鈺漣｜凱騰鈴木北投所
+  - generic [ref=e220]:
+    - link "📞 立即撥打" [ref=e221] [cursor=pointer]:
+      - /url: tel:0987629773
+      - generic [ref=e222]: 📞
+      - text: 立即撥打
+    - link "💬 加 LINE 詢問" [ref=e223] [cursor=pointer]:
+      - /url: https://line.me/R/ti/p/~ke030
+      - generic [ref=e224]: 💬
+      - text: 加 LINE 詢問
+  - button "Open Next.js Dev Tools" [ref=e230] [cursor=pointer]:
+    - img [ref=e231]
+  - alert [ref=e234]
+  - generic [ref=e248]:
+    - generic [ref=e249]: 已選 3/3 台
+    - generic [ref=e250]:
+      - generic [ref=e251]:
+        - generic [ref=e252]: e VITARA
+        - button "移除 e VITARA" [ref=e253] [cursor=pointer]: ✕
+      - generic [ref=e254]:
+        - generic [ref=e255]: SWIFT
+        - button "移除 SWIFT" [ref=e256] [cursor=pointer]: ✕
+      - generic [ref=e261]:
+        - generic [ref=e262]: Jimny
+        - button "移除 Jimny" [ref=e263] [cursor=pointer]: ✕
+    - button "清除全部" [ref=e257] [cursor=pointer]
+    - button "比較" [active] [ref=e258] [cursor=pointer]
+  - dialog "車款比較" [ref=e264]:
+    - generic [ref=e265]:
+      - generic [ref=e266]:
+        - heading "車款比較" [level=3] [ref=e267]
+        - button "關閉" [ref=e268] [cursor=pointer]: ✕
+      - table [ref=e270]:
+        - rowgroup [ref=e271]:
+          - row "項目 e VITARA 純電休旅 SWIFT 靈活小車 Jimny 硬派越野" [ref=e272]:
+            - columnheader "項目" [ref=e273]
+            - columnheader "e VITARA 純電休旅" [ref=e274]:
+              - text: e VITARA
+              - text: 純電休旅
+            - columnheader "SWIFT 靈活小車" [ref=e275]:
+              - text: SWIFT
+              - text: 靈活小車
+            - columnheader "Jimny 硬派越野" [ref=e276]:
+              - text: Jimny
+              - text: 硬派越野
+        - rowgroup [ref=e277]:
+          - row "售價 115 萬起 73 萬起 84.9 萬起" [ref=e278]:
+            - cell "售價" [ref=e279]
+            - cell "115 萬起" [ref=e280]
+            - cell "73 萬起" [ref=e281]
+            - cell "84.9 萬起" [ref=e282]
+          - row "引擎／動力 動力系統：純電馬達 (61kWh 電池) 引擎：1.2L 直列三缸 + 12V HYBRID輕油電 引擎：1.5L 直列四缸" [ref=e283]:
+            - cell "引擎／動力" [ref=e284]
+            - cell "動力系統：純電馬達 (61kWh 電池)" [ref=e285]
+            - cell "引擎：1.2L 直列三缸 + 12V HYBRID輕油電" [ref=e286]
+            - cell "引擎：1.5L 直列四缸" [ref=e287]
+          - row "馬力 - 馬力：81 PS / 5,700 rpm 馬力：102 PS / 6,000 rpm" [ref=e288]:
+            - cell "馬力" [ref=e289]
+            - cell "-" [ref=e290]
+            - cell "馬力：81 PS / 5,700 rpm" [ref=e291]
+            - cell "馬力：102 PS / 6,000 rpm" [ref=e292]
+          - row "油耗 - 油耗：24.5 km/L (能源局) 油耗：15.6 km/L" [ref=e293]:
+            - cell "油耗" [ref=e294]
+            - cell "-" [ref=e295]
+            - cell "油耗：24.5 km/L (能源局)" [ref=e296]
+            - cell "油耗：15.6 km/L" [ref=e297]
+          - row "行李箱 - 行李箱：265L (後座傾倒 579L) -" [ref=e298]:
+            - cell "行李箱" [ref=e299]
+            - cell "-" [ref=e300]
+            - cell "行李箱：265L (後座傾倒 579L)" [ref=e301]
+            - cell "-" [ref=e302]
+          - row "適合誰 重視環保、想降低日常通勤成本的科技先驅 首購族、市區通勤族、機械車位也沒問題 戶外玩家、露營愛好者、想要個性化車款的你" [ref=e303]:
+            - cell "適合誰" [ref=e304]
+            - cell "重視環保、想降低日常通勤成本的科技先驅" [ref=e305]
+            - cell "首購族、市區通勤族、機械車位也沒問題" [ref=e306]
+            - cell "戶外玩家、露營愛好者、想要個性化車款的你" [ref=e307]
+          - row "標語 純電新生活，即刻展開 都會精靈，靈巧省油 為征服荒野而生" [ref=e308]:
+            - cell "標語" [ref=e309]
+            - cell "純電新生活，即刻展開" [ref=e310]
+            - cell "都會精靈，靈巧省油" [ref=e311]
+            - cell "為征服荒野而生" [ref=e312]
+      - button "關閉" [ref=e314] [cursor=pointer]
