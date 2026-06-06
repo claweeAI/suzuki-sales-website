@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://suzuki-sales-website.vercel.app"),
+  metadataBase: new URL("https://suzuki-taipei.com"),
   title: "Suzuki 汽車顧問｜張鈺漣 — 凱騰鈴木北投所 新車諮詢・試乘預約",
   description:
     "Suzuki 全車系（e VITARA・SWIFT・Jimny・VITARA・S-CROSS・CARRY）車款比較、預約試乘、購車諮詢與貸款試算。凱騰鈴木北投所｜張鈺漣 0987-629-773",
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
           name: "凱騰鈴木 Suzuki 北投所",
           description:
             "Suzuki 汽車新車銷售、車款比較、試乘預約、購車諮詢、貸款保險試算",
-          url: "https://suzuki-sales-website.vercel.app",
+          url: "https://suzuki-taipei.com",
           telephone: "+886987629773",
           email: "",
-          image: "https://suzuki-sales-website.vercel.app/og-image.png",
+          image: "https://suzuki-taipei.com/og-image.png",
           address: {
             "@type": "PostalAddress",
             streetAddress: "承德路六段337號",
