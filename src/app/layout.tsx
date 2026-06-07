@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/suzuki-logo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   other: {
     "application/ld+json": JSON.stringify({
