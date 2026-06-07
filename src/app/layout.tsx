@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: "Suzuki 汽車顧問｜張鈺漣",
     description:
       "Suzuki 全車系 — e VITARA・SWIFT・Jimny・VITARA・S-CROSS・CARRY 車款比較、預約試乘、購車諮詢、貸款試算。凱騰鈴木北投所。",
+    url: "https://suzuki-taipei.com",
     type: "website",
     locale: "zh_TW",
     siteName: "Suzuki 汽車顧問 張鈺漣",
